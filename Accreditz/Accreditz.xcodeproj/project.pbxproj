@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37D9458B1A1B004200565E7C /* elephantsincherrytrees.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 37D9458A1A1AFF9D00565E7C /* elephantsincherrytrees.ttf */; };
 		38CE0DB91A1AEB31009AF819 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CE0DB81A1AEB31009AF819 /* main.m */; };
 		38CE0DBC1A1AEB31009AF819 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CE0DBB1A1AEB31009AF819 /* AppDelegate.m */; };
 		38CE0DBF1A1AEB31009AF819 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CE0DBE1A1AEB31009AF819 /* ViewController.m */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		37D9458A1A1AFF9D00565E7C /* elephantsincherrytrees.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = elephantsincherrytrees.ttf; sourceTree = "<group>"; };
 		38CE0DB31A1AEB31009AF819 /* Accreditz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Accreditz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38CE0DB71A1AEB31009AF819 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38CE0DB81A1AEB31009AF819 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				38CE0DBA1A1AEB31009AF819 /* AppDelegate.h */,
 				38CE0DBB1A1AEB31009AF819 /* AppDelegate.m */,
 				38CE0DBD1A1AEB31009AF819 /* ViewController.h */,
+				37D9458A1A1AFF9D00565E7C /* elephantsincherrytrees.ttf */,
 				38CE0DBE1A1AEB31009AF819 /* ViewController.m */,
 				38CE0DC01A1AEB31009AF819 /* Main.storyboard */,
 				38CE0DC31A1AEB31009AF819 /* Images.xcassets */,
@@ -199,6 +202,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37D9458B1A1B004200565E7C /* elephantsincherrytrees.ttf in Resources */,
 				38CE0DC21A1AEB31009AF819 /* Main.storyboard in Resources */,
 				38CE0DC71A1AEB31009AF819 /* LaunchScreen.xib in Resources */,
 				38CE0DC41A1AEB31009AF819 /* Images.xcassets in Resources */,
@@ -414,6 +418,7 @@
 				38CE0DD81A1AEB31009AF819 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		38CE0DD91A1AEB31009AF819 /* Build configuration list for PBXNativeTarget "AccreditzTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +427,7 @@
 				38CE0DDB1A1AEB31009AF819 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

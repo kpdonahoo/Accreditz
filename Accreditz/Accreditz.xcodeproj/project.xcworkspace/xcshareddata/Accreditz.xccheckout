@@ -5,13 +5,13 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>F6B9732C-9FB3-4995-A417-587B83933C79</string>
+	<string>0AB43427-8B92-4F1F-942E-EBCBD608D9C3</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Accreditz</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>24441957DAEA6D8ACBE457E3EC688D660D5E8016</key>
-		<string>ssh://github.com/kpdonahoo/Accreditz.git</string>
+		<string>https://github.com/kpdonahoo/Accreditz</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Accreditz/Accreditz.xcodeproj</string>
@@ -21,7 +21,7 @@
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/kpdonahoo/Accreditz.git</string>
+	<string>https://github.com/kpdonahoo/Accreditz</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
