@@ -8,10 +8,11 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <NSURLSessionTaskDelegate>
 @property (strong, nonatomic) IBOutlet UIView *connectButton;
 @property (weak, nonatomic) IBOutlet UILabel *resultLabel;
 @property (weak, nonatomic) IBOutlet UIButton *button;
+@property (strong, nonatomic) NSURLSession *session;
 
 @end
 
@@ -22,8 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    button.font = [UIFont fontWithName:@"ElephantsinCherryTrees" size:20];
-    // Do any additional setup after loading the view, typically from a nib.
+    
     
 }
 
@@ -35,21 +35,28 @@
 
 - (IBAction)connectToDatabase:(id)sender {
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://ec2-54-68-112-35.us-west-2.compute.amazonaws.com/SE_test.py"]
-                                                          cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
-                                                      timeoutInterval:10];
+    NSURLSessionConfiguration *sessionConfig= [NSURLSessionConfiguration ephemeralSessionConfiguration];
+    sessionConfig.timeoutIntervalForRequest = 5.0;
+    sessionConfig.timeoutIntervalForResource = 8.0;
+    sessionConfig.HTTPMaximumConnectionsPerHost = 1;
     
-    [request setHTTPMethod: @"GET"];
+    self.session = [NSURLSession sessionWithConfiguration:sessionConfig
+                                                 delegate:self
+                                            delegateQueue:nil];
     
-    NSError *requestError;
-    NSURLResponse *urlResponse = nil;
+    NSURL *postUrl = [NSURL URLWithString:@"http://ec2-54-68-112-35.us-west-2.compute.amazonaws.com:8000/ConnectTest"];
     
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:postUrl];
     
-    NSData *response1 = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&requestError];
+    [request setHTTPMethod:@"POST"];
     
-    NSLog(@"%@",[[NSString alloc] initWithData:response1 encoding:NSUTF8StringEncoding]);
+    NSURLSessionDataTask *postTask = [self.session dataTaskWithRequest:request
+                                                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                         NSLog(@"%@",response);
+                                                     }];
+    [postTask resume];
     
-    resultLabel.text = @"hello";
+    resultLabel.text = @"GOT A RESPONSE!";
     
 }
 

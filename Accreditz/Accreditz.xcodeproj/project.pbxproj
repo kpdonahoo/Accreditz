@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		37D9458B1A1B004200565E7C /* elephantsincherrytrees.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 37D9458A1A1AFF9D00565E7C /* elephantsincherrytrees.ttf */; };
+		37E92ADB1A1BD099002ED49C /* smu.png in Resources */ = {isa = PBXBuildFile; fileRef = 37E92ADA1A1BD099002ED49C /* smu.png */; };
+		37E92ADE1A1BD283002ED49C /* accreditz.png in Resources */ = {isa = PBXBuildFile; fileRef = 37E92ADD1A1BD283002ED49C /* accreditz.png */; };
+		37E92AE01A1BE87A002ED49C /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37E92ADF1A1BE87A002ED49C /* icon@2x.png */; };
+		37E92AE31A1BE93A002ED49C /* icon76.png in Resources */ = {isa = PBXBuildFile; fileRef = 37E92AE11A1BE93A002ED49C /* icon76.png */; };
+		37E92AE41A1BE93A002ED49C /* icon76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37E92AE21A1BE93A002ED49C /* icon76@2x.png */; };
 		38CE0DB91A1AEB31009AF819 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CE0DB81A1AEB31009AF819 /* main.m */; };
 		38CE0DBC1A1AEB31009AF819 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CE0DBB1A1AEB31009AF819 /* AppDelegate.m */; };
 		38CE0DBF1A1AEB31009AF819 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CE0DBE1A1AEB31009AF819 /* ViewController.m */; };
@@ -29,6 +34,11 @@
 
 /* Begin PBXFileReference section */
 		37D9458A1A1AFF9D00565E7C /* elephantsincherrytrees.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = elephantsincherrytrees.ttf; sourceTree = "<group>"; };
+		37E92ADA1A1BD099002ED49C /* smu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smu.png; sourceTree = "<group>"; };
+		37E92ADD1A1BD283002ED49C /* accreditz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = accreditz.png; sourceTree = "<group>"; };
+		37E92ADF1A1BE87A002ED49C /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		37E92AE11A1BE93A002ED49C /* icon76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon76.png; sourceTree = "<group>"; };
+		37E92AE21A1BE93A002ED49C /* icon76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon76@2x.png"; sourceTree = "<group>"; };
 		38CE0DB31A1AEB31009AF819 /* Accreditz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Accreditz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38CE0DB71A1AEB31009AF819 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38CE0DB81A1AEB31009AF819 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -86,7 +96,12 @@
 				38CE0DBA1A1AEB31009AF819 /* AppDelegate.h */,
 				38CE0DBB1A1AEB31009AF819 /* AppDelegate.m */,
 				38CE0DBD1A1AEB31009AF819 /* ViewController.h */,
+				37E92AE11A1BE93A002ED49C /* icon76.png */,
+				37E92AE21A1BE93A002ED49C /* icon76@2x.png */,
+				37E92ADD1A1BD283002ED49C /* accreditz.png */,
 				37D9458A1A1AFF9D00565E7C /* elephantsincherrytrees.ttf */,
+				37E92ADF1A1BE87A002ED49C /* icon@2x.png */,
+				37E92ADA1A1BD099002ED49C /* smu.png */,
 				38CE0DBE1A1AEB31009AF819 /* ViewController.m */,
 				38CE0DC01A1AEB31009AF819 /* Main.storyboard */,
 				38CE0DC31A1AEB31009AF819 /* Images.xcassets */,
@@ -202,8 +217,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37E92AE01A1BE87A002ED49C /* icon@2x.png in Resources */,
+				37E92AE41A1BE93A002ED49C /* icon76@2x.png in Resources */,
 				37D9458B1A1B004200565E7C /* elephantsincherrytrees.ttf in Resources */,
+				37E92ADE1A1BD283002ED49C /* accreditz.png in Resources */,
+				37E92AE31A1BE93A002ED49C /* icon76.png in Resources */,
 				38CE0DC21A1AEB31009AF819 /* Main.storyboard in Resources */,
+				37E92ADB1A1BD099002ED49C /* smu.png in Resources */,
 				38CE0DC71A1AEB31009AF819 /* LaunchScreen.xib in Resources */,
 				38CE0DC41A1AEB31009AF819 /* Images.xcassets in Resources */,
 			);
