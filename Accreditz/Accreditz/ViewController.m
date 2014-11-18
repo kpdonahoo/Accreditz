@@ -15,7 +15,6 @@
 
 //hi kevin! :D
 //hi nathan! :D
-//Test conflicts
 //hey kevin and nathan -_-
 @implementation ViewController
 
