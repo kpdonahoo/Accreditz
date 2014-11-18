@@ -15,6 +15,7 @@
 
 //hi kevin! :D
 //hi nathan! :D
+//hey kevin and nathan -_-
 @implementation ViewController
 
 - (void)viewDidLoad {
