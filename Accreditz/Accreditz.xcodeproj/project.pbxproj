@@ -77,6 +77,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3777098A1A2152F7009E1A73 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				37E92AE11A1BE93A002ED49C /* icon76.png */,
+				37E92AE21A1BE93A002ED49C /* icon76@2x.png */,
+				37E92ADD1A1BD283002ED49C /* accreditz.png */,
+				37D9458A1A1AFF9D00565E7C /* elephantsincherrytrees.ttf */,
+				37E92ADF1A1BE87A002ED49C /* icon@2x.png */,
+				37E92ADA1A1BD099002ED49C /* smu.png */,
+				37042A021A1E4F7C00C7EA69 /* accreditz_bg.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
 		38CE0DAA1A1AEB31009AF819 = {
 			isa = PBXGroup;
 			children = (
@@ -98,15 +112,9 @@
 		38CE0DB51A1AEB31009AF819 /* Accreditz */ = {
 			isa = PBXGroup;
 			children = (
-				37042A021A1E4F7C00C7EA69 /* accreditz_bg.png */,
+				3777098A1A2152F7009E1A73 /* images */,
 				38CE0DBA1A1AEB31009AF819 /* AppDelegate.h */,
 				38CE0DBB1A1AEB31009AF819 /* AppDelegate.m */,
-				37E92AE11A1BE93A002ED49C /* icon76.png */,
-				37E92AE21A1BE93A002ED49C /* icon76@2x.png */,
-				37E92ADD1A1BD283002ED49C /* accreditz.png */,
-				37D9458A1A1AFF9D00565E7C /* elephantsincherrytrees.ttf */,
-				37E92ADF1A1BE87A002ED49C /* icon@2x.png */,
-				37E92ADA1A1BD099002ED49C /* smu.png */,
 				37042A0C1A2033AA00C7EA69 /* ClassList.h */,
 				37042A0D1A2033AA00C7EA69 /* ClassList.m */,
 				38CE0DBD1A1AEB31009AF819 /* ViewController.h */,

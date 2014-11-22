@@ -86,6 +86,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="OnE-wk-ZwZ"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="tableView" destination="Brd-Cu-KP1" id="xaa-BC-9He"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fh6-FX-nkv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
