@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		37042A031A1E4F7C00C7EA69 /* accreditz_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 37042A021A1E4F7C00C7EA69 /* accreditz_bg.png */; };
 		37042A0E1A2033AA00C7EA69 /* ClassList.m in Sources */ = {isa = PBXBuildFile; fileRef = 37042A0D1A2033AA00C7EA69 /* ClassList.m */; };
+		37D1896F1A2157DF007EE1AB /* ClassCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37D1896E1A2157DF007EE1AB /* ClassCell.xib */; };
+		37D189721A21599E007EE1AB /* ClassCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D189711A21599E007EE1AB /* ClassCellTableViewCell.m */; };
+		37D189781A215EC3007EE1AB /* ClassPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D189771A215EC3007EE1AB /* ClassPage.m */; };
+		37D1897A1A21613A007EE1AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37D189791A21613A007EE1AB /* Main.storyboard */; };
 		37D9458B1A1B004200565E7C /* elephantsincherrytrees.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 37D9458A1A1AFF9D00565E7C /* elephantsincherrytrees.ttf */; };
 		37E92ADB1A1BD099002ED49C /* smu.png in Resources */ = {isa = PBXBuildFile; fileRef = 37E92ADA1A1BD099002ED49C /* smu.png */; };
 		37E92ADE1A1BD283002ED49C /* accreditz.png in Resources */ = {isa = PBXBuildFile; fileRef = 37E92ADD1A1BD283002ED49C /* accreditz.png */; };
@@ -18,7 +22,6 @@
 		38CE0DB91A1AEB31009AF819 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CE0DB81A1AEB31009AF819 /* main.m */; };
 		38CE0DBC1A1AEB31009AF819 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CE0DBB1A1AEB31009AF819 /* AppDelegate.m */; };
 		38CE0DBF1A1AEB31009AF819 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CE0DBE1A1AEB31009AF819 /* ViewController.m */; };
-		38CE0DC21A1AEB31009AF819 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38CE0DC01A1AEB31009AF819 /* Main.storyboard */; };
 		38CE0DC41A1AEB31009AF819 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38CE0DC31A1AEB31009AF819 /* Images.xcassets */; };
 		38CE0DC71A1AEB31009AF819 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38CE0DC51A1AEB31009AF819 /* LaunchScreen.xib */; };
 		38CE0DD31A1AEB31009AF819 /* AccreditzTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CE0DD21A1AEB31009AF819 /* AccreditzTests.m */; };
@@ -38,6 +41,12 @@
 		37042A021A1E4F7C00C7EA69 /* accreditz_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = accreditz_bg.png; sourceTree = "<group>"; };
 		37042A0C1A2033AA00C7EA69 /* ClassList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassList.h; sourceTree = "<group>"; };
 		37042A0D1A2033AA00C7EA69 /* ClassList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassList.m; sourceTree = "<group>"; };
+		37D1896E1A2157DF007EE1AB /* ClassCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassCell.xib; sourceTree = "<group>"; };
+		37D189701A21599E007EE1AB /* ClassCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassCellTableViewCell.h; sourceTree = "<group>"; };
+		37D189711A21599E007EE1AB /* ClassCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassCellTableViewCell.m; sourceTree = "<group>"; };
+		37D189761A215EC3007EE1AB /* ClassPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClassPage.h; path = ../ClassPage.h; sourceTree = "<group>"; };
+		37D189771A215EC3007EE1AB /* ClassPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClassPage.m; path = ../ClassPage.m; sourceTree = "<group>"; };
+		37D189791A21613A007EE1AB /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		37D9458A1A1AFF9D00565E7C /* elephantsincherrytrees.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = elephantsincherrytrees.ttf; sourceTree = "<group>"; };
 		37E92ADA1A1BD099002ED49C /* smu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smu.png; sourceTree = "<group>"; };
 		37E92ADD1A1BD283002ED49C /* accreditz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = accreditz.png; sourceTree = "<group>"; };
@@ -51,7 +60,6 @@
 		38CE0DBB1A1AEB31009AF819 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		38CE0DBD1A1AEB31009AF819 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		38CE0DBE1A1AEB31009AF819 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		38CE0DC11A1AEB31009AF819 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		38CE0DC31A1AEB31009AF819 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		38CE0DC61A1AEB31009AF819 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		38CE0DCC1A1AEB31009AF819 /* AccreditzTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AccreditzTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,9 +125,14 @@
 				38CE0DBB1A1AEB31009AF819 /* AppDelegate.m */,
 				37042A0C1A2033AA00C7EA69 /* ClassList.h */,
 				37042A0D1A2033AA00C7EA69 /* ClassList.m */,
+				37D189761A215EC3007EE1AB /* ClassPage.h */,
+				37D189771A215EC3007EE1AB /* ClassPage.m */,
 				38CE0DBD1A1AEB31009AF819 /* ViewController.h */,
+				37D189701A21599E007EE1AB /* ClassCellTableViewCell.h */,
+				37D189711A21599E007EE1AB /* ClassCellTableViewCell.m */,
 				38CE0DBE1A1AEB31009AF819 /* ViewController.m */,
-				38CE0DC01A1AEB31009AF819 /* Main.storyboard */,
+				37D189791A21613A007EE1AB /* Main.storyboard */,
+				37D1896E1A2157DF007EE1AB /* ClassCell.xib */,
 				38CE0DC31A1AEB31009AF819 /* Images.xcassets */,
 				38CE0DC51A1AEB31009AF819 /* LaunchScreen.xib */,
 				38CE0DB61A1AEB31009AF819 /* Supporting Files */,
@@ -238,10 +251,11 @@
 				37D9458B1A1B004200565E7C /* elephantsincherrytrees.ttf in Resources */,
 				37E92ADE1A1BD283002ED49C /* accreditz.png in Resources */,
 				37E92AE31A1BE93A002ED49C /* icon76.png in Resources */,
-				38CE0DC21A1AEB31009AF819 /* Main.storyboard in Resources */,
+				37D1897A1A21613A007EE1AB /* Main.storyboard in Resources */,
 				37E92ADB1A1BD099002ED49C /* smu.png in Resources */,
 				38CE0DC71A1AEB31009AF819 /* LaunchScreen.xib in Resources */,
 				37042A031A1E4F7C00C7EA69 /* accreditz_bg.png in Resources */,
+				37D1896F1A2157DF007EE1AB /* ClassCell.xib in Resources */,
 				38CE0DC41A1AEB31009AF819 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,7 +277,9 @@
 				37042A0E1A2033AA00C7EA69 /* ClassList.m in Sources */,
 				38CE0DBF1A1AEB31009AF819 /* ViewController.m in Sources */,
 				38CE0DBC1A1AEB31009AF819 /* AppDelegate.m in Sources */,
+				37D189781A215EC3007EE1AB /* ClassPage.m in Sources */,
 				38CE0DB91A1AEB31009AF819 /* main.m in Sources */,
+				37D189721A21599E007EE1AB /* ClassCellTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,14 +302,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		38CE0DC01A1AEB31009AF819 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				38CE0DC11A1AEB31009AF819 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		38CE0DC51A1AEB31009AF819 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

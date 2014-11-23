@@ -88,11 +88,55 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="tableView" destination="Brd-Cu-KP1" id="xaa-BC-9He"/>
+                        <segue destination="XN3-Q4-fDT" kind="push" identifier="classpage" id="Uy7-Zr-Xm5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fh6-FX-nkv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2843" y="135"/>
+            <point key="canvasLocation" x="2452" y="-151"/>
+        </scene>
+        <!--Class Page-->
+        <scene sceneID="9Qg-5a-86l">
+            <objects>
+                <viewController id="XN3-Q4-fDT" customClass="ClassPage" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="P3y-KR-CFA">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Class Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="I3R-NA-Pey">
+                                <rect key="frame" x="293" y="95" width="440" height="86"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="30"/>
+                                <color key="textColor" red="0.074509803920000006" green="0.36078431370000003" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zvt-wg-AtL">
+                                <rect key="frame" x="741" y="95" width="248" height="86"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="30"/>
+                                <color key="textColor" red="0.074509803920000006" green="0.36078431370000003" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Class Number" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FUm-HQ-ZqT">
+                                <rect key="frame" x="36" y="95" width="249" height="86"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="30"/>
+                                <color key="textColor" red="0.074509803920000006" green="0.36078431370000003" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="4Dd-DE-7TL"/>
+                    <connections>
+                        <outlet property="classNameLabel" destination="I3R-NA-Pey" id="V7x-sV-4Tc"/>
+                        <outlet property="classNumberLabel" destination="FUm-HQ-ZqT" id="gBK-NL-kJG"/>
+                        <outlet property="sectionLabel" destination="Zvt-wg-AtL" id="qTY-mH-Fm2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S2i-9O-uHu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3603" y="-421"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KRU-pb-fxc">
@@ -111,6 +155,19 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OGW-z6-jwS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="753" y="690"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="71Q-Z6-7rs">
+            <objects>
+                <viewController id="dAt-3S-5FZ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wmJ-Od-igO">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l0Z-rP-loZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>

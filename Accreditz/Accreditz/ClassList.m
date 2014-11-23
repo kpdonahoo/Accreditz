@@ -7,6 +7,8 @@
 //
 
 #import "ClassList.h"
+#import "ClassCellTableViewCell.h"
+#import "ClassPage.h"
 
 @interface ClassList () 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -15,33 +17,67 @@
 
 @implementation ClassList
 @synthesize tableView;
-
-NSArray *tableData;
+ClassPage *vc;
+NSString *classNumber;
+NSString *className;
+NSString *section;
+NSString *percent;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     tableView.dataSource = self;
     tableView.delegate = self;
-    tableData = [NSArray arrayWithObjects:@"Egg Benedict", @"Mushroom Risotto", @"Full Breakfast", @"Hamburger", @"Ham and Egg Sandwich", @"Creme Brelee", @"White Chocolate Donut", @"Starbucks Coffee", @"Vegetable Curry", @"Instant Noodle with Egg", @"Noodle with BBQ Pork", @"Japanese Noodle with Pork", @"Green Tea", @"Thai Shrimp Cake", @"Angry Birds Cake", @"Ham and Cheese Panini", nil];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [tableData count];
+    return 20;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *simpleTableIdentifier = @"SimpleTableItem";
+    static NSString *simpleTableIdentifier = @"ClassCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    ClassCellTableViewCell *cell = (ClassCellTableViewCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+    if (cell == nil)
+    {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ClassCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
     }
     
-    cell.textLabel.text = [tableData objectAtIndex:indexPath.row];
+    cell.className.text = @"Programming Languages";
+    cell.classNumber.text = @"CSE 3342";
+    cell.percent.text = @"100% Completed";
+    cell.section.text = @"Section 001";
+    
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    ClassCellTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    classNumber = cell.classNumber.text;
+    className = cell.className.text;
+    section = cell.section.text;
+    percent = cell.percent.text;
+    
+    [self performSegueWithIdentifier: @"classpage" sender: self];
+
+}
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"classpage"])
+    {
+        if ([[segue identifier] isEqualToString:@"classpage"])
+        {
+            vc = (ClassPage *)[segue destinationViewController];
+            vc.className = className;
+            vc.classNumber = classNumber;
+            vc.section = section;
+            vc.percent = percent;
+    }
+}
 }
 
 - (void)didReceiveMemoryWarning {
