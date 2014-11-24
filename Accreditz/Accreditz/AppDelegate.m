@@ -24,7 +24,7 @@
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil]
      setTitleTextAttributes:
      @{NSForegroundColorAttributeName:[UIColor colorWithRed:10.0/255.0 green:78.0/255.0 blue:129.0/255.0 alpha:1],
-       NSFontAttributeName:[UIFont fontWithName:@"Optima" size:20.0]
+       NSFontAttributeName:[UIFont fontWithName:@"Optima" size:18.0]
        }
      forState:UIControlStateNormal];
     

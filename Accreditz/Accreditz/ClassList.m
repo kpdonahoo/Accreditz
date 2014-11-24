@@ -33,6 +33,7 @@ NSString *percent;
     tableView.contentInset = UIEdgeInsetsMake(-60, 0, -60, 0);
     self.navigationController.navigationBar.hidden = NO;
     title.text = [NSString stringWithFormat:@"%@%@", ID, @"'s Classes"];
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:10.0/255.0 green:78.0/255.0 blue:129.0/255.0 alpha:1];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

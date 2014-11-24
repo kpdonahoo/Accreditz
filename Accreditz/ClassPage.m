@@ -53,6 +53,7 @@
     selectOneTableView.dataSource = self;
     selectOneTableView.layer.borderWidth = .5;
     selectOneTableView.layer.borderColor = [[UIColor lightGrayColor]CGColor];
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:10.0/255.0 green:78.0/255.0 blue:129.0/255.0 alpha:1];
     
 }
 
