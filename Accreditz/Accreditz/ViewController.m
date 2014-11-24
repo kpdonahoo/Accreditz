@@ -7,23 +7,41 @@
 //
 
 #import "ViewController.h"
+#import "ClassList.h"
 
 @interface ViewController () <NSURLSessionTaskDelegate>
 @property (strong, nonatomic) IBOutlet UIView *connectButton;
-@property (weak, nonatomic) IBOutlet UILabel *resultLabel;
 @property (strong, nonatomic) NSURLSession *session;
 #define SERVER_URL "http://ec2-54-68-112-35.us-west-2.compute.amazonaws.com:8000"
+@property (weak, nonatomic) IBOutlet UITextField *ID;
+@property (weak, nonatomic) IBOutlet UITextField *password;
+@property (weak, nonatomic) IBOutlet UIImageView *IDasterisk;
+@property (weak, nonatomic) IBOutlet UIImageView *passwordasterisk;
+@property (weak, nonatomic) IBOutlet UIImageView *errorAsterisk;
+
+@property (weak, nonatomic) IBOutlet UILabel *errorMessage;
 
 @end
 
 //Demonstration
 @implementation ViewController
-@synthesize resultLabel;
+@synthesize ID;
+@synthesize password;
+@synthesize IDasterisk;
+@synthesize passwordasterisk;
+@synthesize errorAsterisk;
+@synthesize errorMessage;
+NSMutableDictionary *jsonUpload;
+NSString *result;
+ClassList *vc;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    self.navigationController.navigationBar.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,6 +52,25 @@
 
 - (IBAction)connectToDatabase:(id)sender {
     
+    [self.view endEditing:YES];
+    
+    IDasterisk.hidden = YES;
+    passwordasterisk.hidden = YES;
+    errorAsterisk.hidden = YES;
+    errorMessage.text = @"";
+    
+    if ([ID.text  isEqual: @""]) {
+        NSLog(@"text empty");
+        IDasterisk.hidden = NO;
+    }
+    
+    if ([password.text  isEqual: @""]) {
+        NSLog(@"text empty");
+        passwordasterisk.hidden = NO;
+    }
+    
+    if (![password.text  isEqual: @""] && ![password.text  isEqual: @""]) {
+    
     NSURLSessionConfiguration *sessionConfig= [NSURLSessionConfiguration ephemeralSessionConfiguration];
     sessionConfig.timeoutIntervalForRequest = 5.0;
     sessionConfig.timeoutIntervalForResource = 8.0;
@@ -43,45 +80,61 @@
                                                  delegate:self
                                             delegateQueue:nil];
     
-    NSURL *postUrl = [NSURL URLWithString:@"http://ec2-54-68-112-35.us-west-2.compute.amazonaws.com:8000/ConnectTest"];
+    NSURL *postUrl = [NSURL URLWithString:@"http://ec2-54-68-112-35.us-west-2.compute.amazonaws.com:8000/Login"];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:postUrl];
     
-    [request setHTTPMethod:@"POST"];
+    jsonUpload = [[NSMutableDictionary alloc] init];
+    [jsonUpload setObject:ID.text forKey:@"username"];
+    [jsonUpload setObject:password.text forKey:@"password"];
     
-     NSURLSessionDataTask *postTask = [self.session dataTaskWithRequest:request
-     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-     NSLog(@"%@",response);
-     }];
+    NSLog(@"%@",jsonUpload);
+    
+    NSError *error = nil;
+    NSData *requestBody=[NSJSONSerialization dataWithJSONObject:jsonUpload options:NSJSONWritingPrettyPrinted error:&error];
+    
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:requestBody];
+    
+    NSURLSessionDataTask *postTask = [self.session dataTaskWithRequest:request
+                                                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                         NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData: data
+                                                                                                              options: NSJSONReadingMutableContainers error: &error];
+                                                         
+                                                         NSLog(@"LoginResult:%@",[JSON valueForKey:@"LoginResult"]);
+                                                        result = [JSON valueForKey:@"LoginResult"];
+                                                         dispatch_async(dispatch_get_main_queue(), ^{
+                                                             [self checkResult]; });
+                                                     }];
     
      [postTask resume];
+        
+    }
     
-    /*
-    // Create the request.
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://ec2-54-68-112-35.us-west-2.compute.amazonaws.com:8000/ConnectTest"]];
-    
-    // Specify that it will be a POST request
-    request.HTTPMethod = @"POST";
-    
-    // This is how we set header fields
-    [request setValue:@"application/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-    
-    // Convert your data and set your request's HTTPBody property
-    NSString *stringData = @"some data";
-    NSData *requestBodyData = [stringData dataUsingEncoding:NSUTF8StringEncoding];
-    request.HTTPBody = requestBodyData;
-    
-    // Create url connection and fire request
-    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    
-*/
-    
-    NSString *url = @"http://ec2-54-68-112-35.us-west-2.compute.amazonaws.com:8000/Accreditz/tornado/ConnectTest";
-    
-    NSData *jsonDataString = [[NSString stringWithContentsOfURL:[NSURL URLWithString:url] encoding:NSUTF8StringEncoding error: nil] dataUsingEncoding:NSUTF8StringEncoding];
-    
-    NSLog(@"%@",jsonDataString);
-    
+}
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+        if ([[segue identifier] isEqualToString:@"login"])
+        {
+            vc = (ClassList *)[segue destinationViewController];
+            vc.ID = ID.text;
+            ID.text = @"";
+            password.text = @"";
+            errorMessage.text = @"";
+            errorAsterisk.hidden = YES;
+        }
+}
+
+-(void) checkResult {
+    if (result == NULL) {
+        errorAsterisk.hidden = NO;
+        errorMessage.text = @"Invalid username or password";
+    } else if ([result isEqualToString:@"Failed"]) {
+        errorAsterisk.hidden = NO;
+        errorMessage.text = @"Invalid username or password";
+    } else if ([result isEqualToString:@"Success"]){
+        [self performSegueWithIdentifier:@"login" sender:self];
+    }
 }
 
 @end

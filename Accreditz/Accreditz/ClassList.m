@@ -12,11 +12,14 @@
 
 @interface ClassList () 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UILabel *title;
 
 @end
 
 @implementation ClassList
 @synthesize tableView;
+@synthesize ID;
+@synthesize title;
 ClassPage *vc;
 NSString *classNumber;
 NSString *className;
@@ -27,6 +30,9 @@ NSString *percent;
     [super viewDidLoad];
     tableView.dataSource = self;
     tableView.delegate = self;
+    tableView.contentInset = UIEdgeInsetsMake(-60, 0, -60, 0);
+    self.navigationController.navigationBar.hidden = NO;
+    title.text = [NSString stringWithFormat:@"%@%@", ID, @"'s Classes"];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

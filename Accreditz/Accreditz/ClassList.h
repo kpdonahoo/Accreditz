@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ClassList : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@property (nonatomic, strong) NSString *ID;
 
 @end

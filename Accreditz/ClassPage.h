@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ClassPage : UIViewController
+@interface ClassPage : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) NSString *className;
 @property (nonatomic, strong) NSString *classNumber;
 @property (nonatomic, strong) NSString *section;

@@ -17,6 +17,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        [[UITableView appearance]setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil]
+     setTitleTextAttributes:
+     @{NSForegroundColorAttributeName:[UIColor colorWithRed:10.0/255.0 green:78.0/255.0 blue:129.0/255.0 alpha:1],
+       NSFontAttributeName:[UIFont fontWithName:@"Optima" size:20.0]
+       }
+     forState:UIControlStateNormal];
+    
     return YES;
 }
 

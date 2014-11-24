@@ -13,33 +13,36 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Class Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qjz-x8-FbA">
-                        <rect key="frame" x="292" y="13" width="440" height="86"/>
+                        <rect key="frame" x="292" y="3" width="440" height="86"/>
                         <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="30"/>
-                        <color key="textColor" red="0.074509803920000006" green="0.36078431370000003" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.039215686270000001" green="0.18039215689999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="% Completed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJE-tH-b8B">
-                        <rect key="frame" x="305" y="121" width="415" height="86"/>
+                        <rect key="frame" x="305" y="111" width="415" height="86"/>
                         <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="22"/>
-                        <color key="textColor" red="0.074509803920000006" green="0.36078431370000003" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.039215686270000001" green="0.18039215689999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Section Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W68-Ag-Wpf">
-                        <rect key="frame" x="740" y="13" width="248" height="86"/>
+                        <rect key="frame" x="740" y="3" width="248" height="86"/>
                         <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="30"/>
-                        <color key="textColor" red="0.074509803920000006" green="0.36078431370000003" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.039215686270000001" green="0.18039215689999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Z7o-d7-VjF">
-                        <rect key="frame" x="35" y="115" width="953" height="2"/>
-                        <color key="progressTintColor" red="0.074509803920000006" green="0.36078431370000003" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
+                        <rect key="frame" x="35" y="105" width="953" height="2"/>
+                        <color key="progressTintColor" red="0.039215686270000001" green="0.18039215689999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                     </progressView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Class Number" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o9S-bU-6Fb">
-                        <rect key="frame" x="35" y="13" width="249" height="86"/>
+                        <rect key="frame" x="35" y="3" width="249" height="86"/>
                         <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="30"/>
-                        <color key="textColor" red="0.074509803920000006" green="0.36078431370000003" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.039215686270000001" green="0.18039215689999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="separator.png" translatesAutoresizingMaskIntoConstraints="NO" id="WOD-es-Ak3">
+                        <rect key="frame" x="0.0" y="200" width="1024" height="5"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
@@ -51,4 +54,7 @@
             <point key="canvasLocation" x="931" y="338.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="separator.png" width="16" height="1000"/>
+    </resources>
 </document>
