@@ -23,7 +23,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="FMh-cC-FuP" kind="push" id="zDG-mr-aAw"/>
+                                    <action selector="connectToDatabase:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kvq-Vh-Qbr"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ID" minimumFontSize="17" id="q5z-l1-3XG">
@@ -95,16 +95,6 @@
                                 <rect key="frame" x="0.0" y="167" width="1024" height="5"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2ue-2o-df6">
-                                <rect key="frame" x="16" y="184" width="263" height="53"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="search_drop_down.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="categoryClicked:" destination="FMh-cC-FuP" eventType="touchUpInside" id="5Ku-L1-5kZ"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9ng-PV-fMP">
                                 <rect key="frame" x="258" y="97" width="508" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -130,6 +120,16 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2ue-2o-df6">
+                                <rect key="frame" x="16" y="184" width="263" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="search_drop_down.png">
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="categoryClicked:" destination="FMh-cC-FuP" eventType="touchUpInside" id="5Ku-L1-5kZ"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Grn-V7-p3l">
                                 <rect key="frame" x="29" y="196" width="194" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -137,8 +137,8 @@
                                 <color key="textColor" red="0.047058823530000002" green="0.23529411759999999" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="2lN-mu-pmP">
-                                <rect key="frame" x="22" y="222" width="250" height="84"/>
+                            <tableView hidden="YES" opaque="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="wnK-Gy-zUb">
+                                <rect key="frame" x="22" y="228" width="251" height="129"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
@@ -148,8 +148,9 @@
                     <navigationItem key="navigationItem" id="XVA-Ck-0WG"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
+                        <outlet property="SearchView" destination="RW3-pC-LSf" id="Irf-8i-KG1"/>
                         <outlet property="categoryLabel" destination="Grn-V7-p3l" id="6NQ-o2-Rpr"/>
-                        <outlet property="categoryTableView" destination="2lN-mu-pmP" id="zQE-Ai-73k"/>
+                        <outlet property="categoryTableView" destination="wnK-Gy-zUb" id="sgl-D2-JK7"/>
                         <outlet property="searchText" destination="o1C-1A-r7n" id="Ifn-Wp-nNa"/>
                     </connections>
                 </viewController>
@@ -241,7 +242,7 @@
                                 <rect key="frame" x="238" y="162" width="5" height="603"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <view hidden="YES" contentMode="scaleToFill" id="fOy-mA-nJ1">
+                            <view contentMode="scaleToFill" id="fOy-mA-nJ1">
                                 <rect key="frame" x="252" y="162" width="772" height="606"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -292,9 +293,17 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Outcome2.png" id="ziP-cX-Dey">
-                                        <rect key="frame" x="82" y="269" width="608" height="253"/>
+                                        <rect key="frame" x="25" y="247" width="692" height="283"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" minimumFontSize="9" id="jaL-Is-CAz">
+                                        <rect key="frame" x="47" y="320" width="158" height="147"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <string key="text">An ability to apply mathematical foundations, algorithmic principles, and computer science theory in the modeling and design of computer-based systems in a way that demonstrates comprehension of the tradeoffs involved in design choices.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>

@@ -49,6 +49,7 @@
                 <outlet property="className" destination="Qjz-x8-FbA" id="wBk-ca-dTY"/>
                 <outlet property="classNumber" destination="o9S-bU-6Fb" id="tbt-4r-EU7"/>
                 <outlet property="percent" destination="JJE-tH-b8B" id="1no-5r-Pgu"/>
+                <outlet property="percentageBar" destination="Z7o-d7-VjF" id="X5d-ac-10B"/>
                 <outlet property="section" destination="W68-Ag-Wpf" id="DHQ-uU-voC"/>
             </connections>
             <point key="canvasLocation" x="931" y="338.5"/>

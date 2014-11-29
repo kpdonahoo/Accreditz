@@ -36,9 +36,9 @@ NSString *result;
 ClassList *vc;
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    
+    [super viewDidLoad];    
 }
+
 
 - (void)viewDidAppear:(BOOL)animated {
     self.navigationController.navigationBar.hidden = YES;

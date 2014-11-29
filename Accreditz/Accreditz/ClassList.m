@@ -13,6 +13,7 @@
 @interface ClassList () 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *title;
+@property (strong, nonatomic) NSURLSession *session;
 
 @end
 
@@ -20,11 +21,14 @@
 @synthesize tableView;
 @synthesize ID;
 @synthesize title;
+NSMutableDictionary *jsonUpload;
 ClassPage *vc;
 NSString *classNumber;
 NSString *className;
 NSString *section;
 NSString *percent;
+NSString *name;
+NSString *classes_string;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,7 +36,8 @@ NSString *percent;
     tableView.delegate = self;
     tableView.contentInset = UIEdgeInsetsMake(-60, 0, -60, 0);
     self.navigationController.navigationBar.hidden = NO;
-    title.text = [NSString stringWithFormat:@"%@%@", ID, @"'s Classes"];
+    [self getProfessorInfo];
+    [self getClasses];
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:10.0/255.0 green:78.0/255.0 blue:129.0/255.0 alpha:1];
 }
 
@@ -91,6 +96,87 @@ NSString *percent;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void) getProfessorInfo {
+    
+    NSURLSessionConfiguration *sessionConfig= [NSURLSessionConfiguration ephemeralSessionConfiguration];
+    sessionConfig.timeoutIntervalForRequest = 5.0;
+    sessionConfig.timeoutIntervalForResource = 8.0;
+    sessionConfig.HTTPMaximumConnectionsPerHost = 1;
+    
+    self.session = [NSURLSession sessionWithConfiguration:sessionConfig
+                                                 delegate:self
+                                            delegateQueue:nil];
+    
+    NSURL *postUrl = [NSURL URLWithString:@"http://ec2-54-68-112-35.us-west-2.compute.amazonaws.com:8000/GetProfessorInfo"];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:postUrl];
+    
+    jsonUpload = [[NSMutableDictionary alloc] init];
+    [jsonUpload setObject:ID forKey:@"username"];
+    
+    NSLog(@"%@",jsonUpload);
+    
+    NSError *error = nil;
+    NSData *requestBody=[NSJSONSerialization dataWithJSONObject:jsonUpload options:NSJSONWritingPrettyPrinted error:&error];
+    
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:requestBody];
+    
+    NSURLSessionDataTask *postTask = [self.session dataTaskWithRequest:request
+                                                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                         NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData: data
+                                                                                                              options: NSJSONReadingMutableContainers error: &error];
+
+                                                         name = [JSON valueForKey:@"name"];
+                                                         dispatch_async(dispatch_get_main_queue(), ^{
+                                                             title.text = [NSString stringWithFormat:@"%@%@", name, @"'s Classes"];
+                                                         });
+                                                     }];
+
+[postTask resume];
+    
+}
+
+-(void) getClasses {
+    
+    NSURL *postUrl = [NSURL URLWithString:@"http://ec2-54-68-112-35.us-west-2.compute.amazonaws.com:8000/GetClasses"];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:postUrl];
+    
+    jsonUpload = [[NSMutableDictionary alloc] init];
+    [jsonUpload setObject:ID forKey:@"username"];
+    
+    NSLog(@"%@",jsonUpload);
+    
+    NSError *error = nil;
+    NSData *requestBody=[NSJSONSerialization dataWithJSONObject:jsonUpload options:NSJSONWritingPrettyPrinted error:&error];
+    
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:requestBody];
+    
+    NSURLSessionDataTask *postTask = [self.session dataTaskWithRequest:request
+                                                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                         NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData: data
+                                                                                                              options: NSJSONReadingMutableContainers error: &error];
+                                                         //NSDictionary *classes_data = [JSON objectForKey:@"classes"];
+
+                                                         classes_string =[JSON valueForKey:@"classes"];
+                                                         
+                                                         NSLog(@"%@",classes_string);
+                                                         /*
+                                                         id jsonData = [classes_string dataUsingEncoding:NSUTF8StringEncoding]; //if input is NSString
+                                                         id readJsonDictOrArrayDependingOnJson = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+                                                         
+                                                         NSLog(@"%@",readJsonDictOrArrayDependingOnJson);*/
+
+                                                     }];
+    
+    [postTask resume];
+    
+}
+
+
 
 /*
 #pragma mark - Navigation

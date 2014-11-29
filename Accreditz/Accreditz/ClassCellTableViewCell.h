@@ -14,5 +14,6 @@
 @property (nonatomic, weak) IBOutlet UILabel *className;
 @property (nonatomic, weak) IBOutlet UILabel *section;
 @property (nonatomic, weak) IBOutlet UILabel *percent;
+@property (weak, nonatomic) IBOutlet UIProgressView *percentageBar;
 
 @end
