@@ -242,7 +242,7 @@
                                 <rect key="frame" x="238" y="162" width="5" height="603"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <view contentMode="scaleToFill" id="fOy-mA-nJ1">
+                            <view hidden="YES" contentMode="scaleToFill" id="fOy-mA-nJ1">
                                 <rect key="frame" x="252" y="162" width="772" height="606"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>

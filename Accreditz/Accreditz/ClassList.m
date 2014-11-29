@@ -9,6 +9,7 @@
 #import "ClassList.h"
 #import "ClassCellTableViewCell.h"
 #import "ClassPage.h"
+#import "ClassObject.h"
 
 @interface ClassList () 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -29,6 +30,8 @@ NSString *section;
 NSString *percent;
 NSString *name;
 NSString *classes_string;
+NSMutableArray *classes;
+NSMutableArray *classObjects;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,11 +42,12 @@ NSString *classes_string;
     [self getProfessorInfo];
     [self getClasses];
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:10.0/255.0 green:78.0/255.0 blue:129.0/255.0 alpha:1];
+    classObjects = [[NSMutableArray alloc] init];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    return [classObjects count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -58,10 +62,12 @@ NSString *classes_string;
         cell = [nib objectAtIndex:0];
     }
     
-    cell.className.text = @"Programming Languages";
-    cell.classNumber.text = @"CSE 3342";
-    cell.percent.text = @"100% Completed";
-    cell.section.text = @"Section 001";
+    ClassObject *temp = [classObjects objectAtIndex:indexPath.row];
+    
+    cell.className.text = temp.name;
+    cell.classNumber.text = temp.number;
+    cell.percent.text = @"100%";
+    cell.section.text = temp.section;
     
     return cell;
 }
@@ -164,12 +170,27 @@ NSString *classes_string;
                                                          classes_string =[JSON valueForKey:@"classes"];
                                                          
                                                          NSLog(@"%@",classes_string);
-                                                         /*
-                                                         id jsonData = [classes_string dataUsingEncoding:NSUTF8StringEncoding]; //if input is NSString
-                                                         id readJsonDictOrArrayDependingOnJson = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
                                                          
-                                                         NSLog(@"%@",readJsonDictOrArrayDependingOnJson);*/
-
+                                                         classes = [NSMutableArray arrayWithArray:[classes_string componentsSeparatedByString: @","]];
+                                                         
+                                                         
+                                                         for (int i = 0; i < [classes count]-1; i++) {
+                                                             
+                                                             ClassObject *temp = [[ClassObject alloc] init];
+                                                             temp.semester = [classes objectAtIndex:i];
+                                                             i++;
+                                                             temp.name =[classes objectAtIndex:i];
+                                                             i++;
+                                                             temp.number = [classes objectAtIndex:i];
+                                                             i++;
+                                                             temp.section = [classes objectAtIndex:i];
+                                                             
+                                                             [classObjects addObject:temp];
+                                                             
+                                                         }
+                                                         
+                                                         [tableView reloadData];
+                                                         
                                                      }];
     
     [postTask resume];
