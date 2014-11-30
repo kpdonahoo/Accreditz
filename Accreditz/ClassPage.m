@@ -23,6 +23,12 @@
 @property (strong, nonatomic) NSURLSession *session;
 @property (weak, nonatomic) IBOutlet UILabel *outcomeTitle;
 @property (weak, nonatomic) IBOutlet UILabel *outcomeDescription;
+@property (weak, nonatomic) IBOutlet UILabel *performanceDescription;
+@property (weak, nonatomic) IBOutlet UILabel *boxOne;
+@property (weak, nonatomic) IBOutlet UILabel *boxTwo;
+@property (weak, nonatomic) IBOutlet UILabel *boxThree;
+@property (weak, nonatomic) IBOutlet UILabel *boxFour;
+@property (weak, nonatomic) IBOutlet UIImageView *diagram;
 
 @end
 
@@ -41,6 +47,12 @@
 @synthesize selectOneTableView;
 @synthesize session;
 @synthesize outcomeTitle;
+@synthesize performanceDescription;
+@synthesize boxOne;
+@synthesize boxTwo;
+@synthesize boxThree;
+@synthesize boxFour;
+@synthesize diagram;
 NSMutableDictionary *jsonUpload;
 NSString *students_string;
 NSString *outcomes_string;
@@ -53,6 +65,8 @@ NSMutableArray *symbols;
 NSMutableArray *info_array;
 NSMutableArray *info;
 NSMutableArray *performance_indicators;
+NSMutableArray *indicator_descriptions;
+NSMutableArray *box_descriptions;
 
 UIImage *EAC;
 UIImage *CAC;
@@ -80,11 +94,12 @@ UIImage *CAC;
     outcomes = [[NSMutableArray alloc] init];
     info = [[NSMutableArray alloc] init];
     performance_indicators = [[NSMutableArray alloc] init];
+    indicator_descriptions = [[NSMutableArray alloc] init];
+    box_descriptions = [[NSMutableArray alloc] init];
     EAC = [UIImage imageNamed:@"EAC.png"];
     CAC = [UIImage imageNamed:@"CAC.png"];
     [self getRoster];
     [self getOutcomesOfCourse];
-    [self getPerformanceIndicatorInfo];
     
 }
 
@@ -172,11 +187,22 @@ UIImage *CAC;
     
     outcomesTableView.hidden = TRUE;
     outcomeTitle.text = [outcomes objectAtIndex:indexPath.row];
+    [self getPerformanceIndicatorInfo];
     outcomeView.hidden = FALSE;
     
     } else if (tableView.tag == 2) {
-        NSLog(@"select table view selected");
         selectOneTableView.hidden = YES;
+        performanceDescription.text = [indicator_descriptions objectAtIndex:indexPath.row];
+        performanceDescription.hidden = FALSE;
+        
+        int index = indexPath.row;
+        
+        boxOne.text = [box_descriptions objectAtIndex:index*4];
+        boxTwo.text = [box_descriptions objectAtIndex:(index*4)+1];
+        boxThree.text = [box_descriptions objectAtIndex:(index*4)+2];
+        boxFour.text = [box_descriptions objectAtIndex:(index*4)+3];
+        
+        diagram.hidden = FALSE;
     }
 }
 
@@ -325,7 +351,7 @@ UIImage *CAC;
     NSString *first = [title substringToIndex:3];
     NSString *second = [title substringFromIndex: [title length] - 1];
     NSString *send = [NSString stringWithFormat:@"%@%@",[first lowercaseString],[second lowercaseString]];
-    [jsonUpload setObject:classNumber forKey:@"outcome"];
+    [jsonUpload setObject:send forKey:@"outcome"];
     
     NSLog(@"%@",jsonUpload);
     
@@ -346,14 +372,35 @@ UIImage *CAC;
                                                          
                                                          info_array = [NSMutableArray arrayWithArray:[performance_string componentsSeparatedByString: @";"]];
                                                          
-                                                         for (int i = 1; i <= (([info_array count]-1)/5); i++) {
+                                                         int number_of_indicators = (([info_array count]-1)/5);
+                                                         
+                                                         for (int j = 1; j <= number_of_indicators; j++) {
                                                              
-                                                             [performance_indicators addObject:[NSString stringWithFormat:@"Performance Indicator %d",i]];
+                                                             [performance_indicators addObject:[NSString stringWithFormat:@"Performance Indicator %d",j]];
+                                                         }
+                                                         
+                                                         for (int j = 1; j < [info_array count]; j=j+5) {
+                                                             
+                                                             [indicator_descriptions addObject:[info_array objectAtIndex:j]];
+                                                         }
+                                                         
+                                                         for (int j = 2; j < [info_array count]; j=j+3) {
+                                                             
+                                                             [box_descriptions addObject:[info_array objectAtIndex:j]];
+                                                             j++;
+                                                             [box_descriptions addObject:[info_array objectAtIndex:j]];
+                                                             j++;
+                                                             [box_descriptions addObject:[info_array objectAtIndex:j]];
+                                                             j++;
+                                                             [box_descriptions addObject:[info_array objectAtIndex:j]];
+                                                         }
+                                                         
+                                                         for (int i = 0; i < [box_descriptions count]; i++) {
+                                                             NSLog([box_descriptions objectAtIndex:i]);
                                                          }
                                                          
                                                          
-                                                         NSLog(@"%@",performance_indicators);
-                                                         
+                                                         [selectOneTableView reloadData];
                                                          
                                                          dispatch_async(dispatch_get_main_queue(), ^{
                                                          outcomeDescription.text = [info_array objectAtIndex:0];

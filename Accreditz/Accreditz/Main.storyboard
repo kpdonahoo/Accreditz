@@ -246,12 +246,11 @@
                                 <rect key="frame" x="252" y="162" width="772" height="606"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LhK-rg-eVC">
-                                        <rect key="frame" x="45" y="170" width="682" height="120"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title of Outcome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GhK-UB-Qhq">
+                                        <rect key="frame" x="4" y="8" width="764" height="48"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <string key="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
-                                        <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="16"/>
-                                        <color key="textColor" red="0.039215686274509803" green="0.1803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="25"/>
+                                        <color key="textColor" red="0.039215686270000001" green="0.18039215689999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="BWz-VZ-2h9">
@@ -284,23 +283,44 @@
                                             <action selector="selectOneCalled:" destination="XN3-Q4-fDT" eventType="touchUpInside" id="vdI-6e-EQH"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Outcome2.png" id="ziP-cX-Dey">
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Outcome2.png" id="ziP-cX-Dey">
                                         <rect key="frame" x="25" y="247" width="692" height="283"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" minimumFontSize="9" id="jaL-Is-CAz">
-                                        <rect key="frame" x="47" y="320" width="158" height="147"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" minimumFontSize="9" id="rjV-xd-x5e">
+                                        <rect key="frame" x="46" y="320" width="158" height="147"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <string key="text">An ability to apply mathematical foundations, algorithmic principles, and computer science theory in the modeling and design of computer-based systems in a way that demonstrates comprehension of the tradeoffs involved in design choices.</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
+                                        <color key="textColor" red="0.047058823530000002" green="0.23529411759999999" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title of Outcome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GhK-UB-Qhq">
-                                        <rect key="frame" x="4" y="8" width="764" height="48"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" minimumFontSize="9" id="DpY-XS-fPm">
+                                        <rect key="frame" x="212" y="320" width="158" height="147"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="25"/>
-                                        <color key="textColor" red="0.039215686270000001" green="0.18039215689999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
+                                        <color key="textColor" red="0.047058823530000002" green="0.23529411759999999" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" minimumFontSize="9" id="rRM-Jk-ffA">
+                                        <rect key="frame" x="378" y="320" width="158" height="147"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
+                                        <color key="textColor" red="0.047058823530000002" green="0.23529411759999999" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LhK-rg-eVC">
+                                        <rect key="frame" x="45" y="155" width="682" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <string key="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
+                                        <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="16"/>
+                                        <color key="textColor" red="0.039215686274509803" green="0.1803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" minimumFontSize="9" id="jaL-Is-CAz">
+                                        <rect key="frame" x="544" y="320" width="158" height="147"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
+                                        <color key="textColor" red="0.047058823530000002" green="0.23529411759999999" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -326,12 +346,18 @@
                     </view>
                     <navigationItem key="navigationItem" id="4Dd-DE-7TL"/>
                     <connections>
+                        <outlet property="boxFour" destination="jaL-Is-CAz" id="emJ-Dz-Vfz"/>
+                        <outlet property="boxOne" destination="rjV-xd-x5e" id="udU-hr-oej"/>
+                        <outlet property="boxThree" destination="rRM-Jk-ffA" id="Wxu-xk-HSo"/>
+                        <outlet property="boxTwo" destination="DpY-XS-fPm" id="fae-WM-Xrg"/>
                         <outlet property="classNameLabel" destination="I3R-NA-Pey" id="V7x-sV-4Tc"/>
                         <outlet property="classNumberLabel" destination="FUm-HQ-ZqT" id="gBK-NL-kJG"/>
+                        <outlet property="diagram" destination="ziP-cX-Dey" id="mM8-s8-lFj"/>
                         <outlet property="outcomeDescription" destination="BWz-VZ-2h9" id="LDF-Ot-Nq8"/>
                         <outlet property="outcomeTitle" destination="GhK-UB-Qhq" id="JlB-MH-GRs"/>
                         <outlet property="outcomeView" destination="fOy-mA-nJ1" id="rUu-fQ-Pts"/>
                         <outlet property="outcomesTableView" destination="PxI-hM-IZm" id="ftO-vd-Nyx"/>
+                        <outlet property="performanceDescription" destination="LhK-rg-eVC" id="Ite-3W-NIP"/>
                         <outlet property="rosterTableView" destination="lRh-zN-czR" id="RTR-mO-VoD"/>
                         <outlet property="sectionLabel" destination="Zvt-wg-AtL" id="qTY-mH-Fm2"/>
                         <outlet property="selectButton" destination="yar-Jr-fVi" id="d9c-kY-jFY"/>
