@@ -10,6 +10,7 @@
 
 @implementation OutcomeCell
 @synthesize outcome;
+@synthesize outcome2;
 
 - (void)awakeFromNib {
     // Initialization code

@@ -10,5 +10,6 @@
 
 @interface OutcomeCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *outcome;
+@property (weak, nonatomic) IBOutlet UILabel *outcome2;
 
 @end

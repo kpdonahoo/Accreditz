@@ -88,6 +88,7 @@ int Scount;
 int Ecount;
 int CACcount;
 int EACcount;
+int selected;
 
 UIImage *EAC;
 UIImage *CAC;
@@ -170,17 +171,17 @@ UIImage *CAC;
 
     } else if (tableView.tag == 1){
             
-        static NSString *simpleTableIdentifier = @"OutcomeCell";
+        static NSString *simpleTableIdentifier = @"OutcomeCell2";
             
         OutcomeCell *cell = (OutcomeCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
             
         if (cell == nil)
             {
-                NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"OutcomeCell" owner:self options:nil];
+                NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"OutcomeCell2" owner:self options:nil];
                 cell = [nib objectAtIndex:0];
             }
         
-        cell.outcome.text = [outcomes objectAtIndex:indexPath.row];
+        cell.outcome2.text = [outcomes objectAtIndex:indexPath.row];
         return cell;
         
     } else if (tableView.tag == 2) {
@@ -217,7 +218,7 @@ UIImage *CAC;
     
     } else if (tableView.tag == 2) {
         selectOneTableView.hidden = YES;
-         submitButton.hidden = FALSE;
+        submitButton.hidden = FALSE;
         performanceDescription.text = [indicator_descriptions objectAtIndex:indexPath.row];
         performanceDescription.hidden = FALSE;
         
@@ -229,8 +230,14 @@ UIImage *CAC;
         boxFour.text = [box_descriptions objectAtIndex:(index*4)+3];
         
         diagram.hidden = FALSE;
+        Dlabel.text = @"0";
+        Ulabel.text = @"0";
+        Slabel.text = @"0";
+        Elabel.text = @"0";
         
         indicatorLabel.text = [NSString stringWithFormat:@"Performance Indicator %i",indexPath.row+1];
+        
+        selected = indexPath.row+1;
     }
 }
 
@@ -262,8 +269,11 @@ UIImage *CAC;
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:postUrl];
     
     jsonUpload = [[NSMutableDictionary alloc] init];
-    [jsonUpload setObject:classNumber forKey:@"course"];
-    [jsonUpload setObject:section forKey:@"section"];
+    NSString *class = [classNumber substringFromIndex: [classNumber length] - 4];
+    NSString *class_send = [NSString stringWithFormat:@"cse%@",class];
+    [jsonUpload setObject:class_send forKey:@"course"];
+    NSString *section_send = [section substringFromIndex: [section length] - 3];
+    [jsonUpload setObject:section_send forKey:@"section"];
     
     NSLog(@"%@",jsonUpload);
     
@@ -309,6 +319,12 @@ UIImage *CAC;
                                                          
                                                          [rosterTableView reloadData];
                                                          
+                                                         dispatch_async(dispatch_get_main_queue(), ^{
+                                                             [rosterTableView reloadData];
+                                                         });
+                                                         
+                                                         
+                                                         
                                                      }];
     
     [postTask resume];
@@ -322,7 +338,9 @@ UIImage *CAC;
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:postUrl];
     
     jsonUpload = [[NSMutableDictionary alloc] init];
-    [jsonUpload setObject:classNumber forKey:@"course"];
+    NSString *class = [classNumber substringFromIndex: [classNumber length] - 4];
+    NSString *class_send = [NSString stringWithFormat:@"cse%@",class];
+    [jsonUpload setObject:class_send forKey:@"course"];
     
     NSLog(@"%@",jsonUpload);
     
@@ -366,6 +384,11 @@ UIImage *CAC;
                                                          }
                                                          
                                                          [outcomesTableView reloadData];
+                                                         
+                                                         dispatch_async(dispatch_get_main_queue(), ^{
+                                                             [outcomesTableView reloadData];
+                                                         });
+
                                                          
                                                      }];
     
@@ -437,9 +460,10 @@ UIImage *CAC;
                                                          
                                                          dispatch_async(dispatch_get_main_queue(), ^{
                                                          outcomeDescription.text = [info_array objectAtIndex:0];
+                                                         [selectOneTableView reloadData];
                                                              });
 
-                                                             [outcomesTableView reloadData];
+                                                         
                                                          
                                                      }];
     
@@ -456,12 +480,12 @@ UIImage *CAC;
 
 - (IBAction)Uplus:(id)sender {
     if ([[outcomeTitle.text substringToIndex:1] isEqualToString:@"C"]) {
-        if (Ucount < CACcount ) {
+        if (Ucount < CACcount && (Ucount+Dcount+Scount+Ecount < CACcount)) {
             Ucount++;
             Ulabel.text = [NSString stringWithFormat:@"%i",Ucount];
         }
     } else if ([[outcomeTitle.text substringToIndex:1] isEqualToString:@"E"]) {
-        if (Ucount < EACcount ) {
+        if (Ucount < EACcount && (Ucount+Dcount+Scount+Ecount < EACcount)) {
             Ucount++;
             Ulabel.text = [NSString stringWithFormat:@"%i",Ucount];
         }
@@ -477,12 +501,12 @@ UIImage *CAC;
 
 - (IBAction)Dplus:(id)sender {
     if ([[outcomeTitle.text substringToIndex:1] isEqualToString:@"C"]) {
-        if (Dcount < CACcount ) {
+        if (Dcount < CACcount && (Ucount+Dcount+Scount+Ecount < CACcount)) {
             Dcount++;
             Dlabel.text = [NSString stringWithFormat:@"%i",Dcount];
         }
     } else if ([[outcomeTitle.text substringToIndex:1] isEqualToString:@"E"]) {
-        if (Dcount < EACcount ) {
+        if (Dcount < EACcount && (Ucount+Dcount+Scount+Ecount < EACcount)) {
             Dcount++;
             Dlabel.text = [NSString stringWithFormat:@"%i",Dcount];
         }
@@ -498,12 +522,12 @@ UIImage *CAC;
 
 - (IBAction)Splus:(id)sender {
     if ([[outcomeTitle.text substringToIndex:1] isEqualToString:@"C"]) {
-        if (Scount < CACcount ) {
+        if (Scount < CACcount && (Ucount+Dcount+Scount+Ecount < CACcount)) {
             Scount++;
             Slabel.text = [NSString stringWithFormat:@"%i",Scount];
         }
     } else if ([[outcomeTitle.text substringToIndex:1] isEqualToString:@"E"]) {
-        if (Scount < EACcount ) {
+        if (Scount < EACcount && (Ucount+Dcount+Scount+Ecount < EACcount)) {
             Scount++;
             Slabel.text = [NSString stringWithFormat:@"%i",Scount];
         }
@@ -519,12 +543,12 @@ UIImage *CAC;
 
 - (IBAction)Eplus:(id)sender {
     if ([[outcomeTitle.text substringToIndex:1] isEqualToString:@"C"]) {
-        if (Ecount < CACcount ) {
+        if (Ecount < CACcount && (Ucount+Dcount+Scount+Ecount < CACcount)) {
             Ecount++;
             Elabel.text = [NSString stringWithFormat:@"%i",Ecount];
         }
     } else if ([[outcomeTitle.text substringToIndex:1] isEqualToString:@"E"]) {
-        if (Ecount < EACcount ) {
+        if (Ecount < EACcount && (Ucount+Dcount+Scount+Ecount < EACcount)) {
             Ecount++;
             Elabel.text = [NSString stringWithFormat:@"%i",Ecount];
         }
@@ -538,8 +562,11 @@ UIImage *CAC;
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:postUrl];
     
     jsonUpload = [[NSMutableDictionary alloc] init];
-    [jsonUpload setObject:classNumber forKey:@"course"];
-    [jsonUpload setObject:section forKey:@"section"];
+    NSString *class = [classNumber substringFromIndex: [classNumber length] - 4];
+    NSString *class_send = [NSString stringWithFormat:@"cse%@",class];
+    [jsonUpload setObject:class_send forKey:@"course"];
+    NSString *section_send = [section substringFromIndex: [section length] - 3];
+    [jsonUpload setObject:section_send forKey:@"section"];
     NSString *title = outcomeTitle.text;
     NSString *first = [title substringToIndex:3];
     NSString *second = [title substringFromIndex: [title length] - 1];
@@ -549,6 +576,7 @@ UIImage *CAC;
     [jsonUpload setObject:[NSString stringWithFormat:@"%i",Dcount] forKey:@"2"];
     [jsonUpload setObject:[NSString stringWithFormat:@"%i",Scount] forKey:@"3"];
     [jsonUpload setObject:[NSString stringWithFormat:@"%i",Ecount] forKey:@"4"];
+    [jsonUpload setObject:[NSString stringWithFormat:@"%i",selected] forKey:@"pi"];
     
     NSLog(@"%@",jsonUpload);
     
@@ -565,7 +593,23 @@ UIImage *CAC;
                                                          
                                                          NSString *result =[JSON valueForKey:@"meow"];
                                                          
-                                                         NSLog(@"%@",result);
+                                                         dispatch_async(dispatch_get_main_queue(), ^{
+                                                         outcomeView.hidden = TRUE;
+                                                         outcomesTableView.hidden = FALSE;
+                                                         Ulabel.text = @"";
+                                                         Dlabel.text = @"";
+                                                         Slabel.text = @"";
+                                                         Elabel.text = @"";
+                                                             
+                                                         [performance_indicators removeAllObjects];
+                                                         
+                                                         indicatorLabel.text = @"Select Performance Indicator";
+                                                             
+                                                             boxOne.text = @"";
+                                                             boxTwo.text = @"";
+                                                             boxThree.text = @"";
+                                                             boxFour.text = @"";
+                                                         });
                                                          
                                                      }];
     
@@ -576,10 +620,17 @@ UIImage *CAC;
 
 - (IBAction)goBackFromOutcome:(id)sender {
     outcomeView.hidden = TRUE;
-    Ulabel.text = @"0";
-    Dlabel.text = @"0";
-    Slabel.text = @"0";
-    Elabel.text = @"0";
+    outcomesTableView.hidden = FALSE;
+    Ulabel.text = @"";
+    Dlabel.text = @"";
+    Slabel.text = @"";
+    Elabel.text = @"";
+    [performance_indicators removeAllObjects];
+    indicatorLabel.text = @"Select Performance Indicator";
+    boxOne.text = @"";
+    boxTwo.text = @"";
+    boxThree.text = @"";
+    boxFour.text = @"";
 }
 
 @end

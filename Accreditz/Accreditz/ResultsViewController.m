@@ -64,11 +64,11 @@ NSMutableDictionary *jsonUpload;
     
     ResultsRow *temp = [resultsRows objectAtIndex:indexPath.row];
     cell.box0.text = temp.one;
-    cell.box1.text = temp.two;
-    cell.box2.text = temp.three;
-    cell.box3.text = temp.four;
-    cell.box4.text = temp.five;
-    cell.box5.text = temp.six;
+    cell.box1.text = [NSString stringWithFormat:@"%@%@",temp.two,@"%"];
+    cell.box2.text = [NSString stringWithFormat:@"%@%@",temp.three,@"%"];
+    cell.box3.text = [NSString stringWithFormat:@"%@%@",temp.four,@"%"];
+    cell.box4.text = [NSString stringWithFormat:@"%@%@",temp.five,@"%"];
+    cell.box5.text = [NSString stringWithFormat:@"%@%@",temp.six,@"%"];
         
         return cell;
 }
@@ -124,7 +124,7 @@ NSMutableDictionary *jsonUpload;
                                                          
                                                          int count = 0;
                                                          for (int i = 1; i < [results count]-1; i++) {
-                                                             if ([[results objectAtIndex:i] length] > 3) {
+                                                             if ([[results objectAtIndex:i] length] > 6) {
                                                                  count++;
                                                              }
                                                          }

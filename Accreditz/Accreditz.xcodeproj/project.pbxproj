@@ -23,6 +23,7 @@
 		372A52151A31976600A21D2F /* ResultsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 372A52141A31976600A21D2F /* ResultsCell.xib */; };
 		372A52181A31992400A21D2F /* ResultsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 372A52171A31992400A21D2F /* ResultsCell.m */; };
 		372A521B1A31A48600A21D2F /* ResultsRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 372A521A1A31A48600A21D2F /* ResultsRow.m */; };
+		372A521D1A31BB0C00A21D2F /* OutcomeCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 372A521C1A31BB0C00A21D2F /* OutcomeCell2.xib */; };
 		3750FDAD1A2A8F5500A2E742 /* CAC.png in Resources */ = {isa = PBXBuildFile; fileRef = 3750FDAB1A2A8F5500A2E742 /* CAC.png */; };
 		37D1896F1A2157DF007EE1AB /* ClassCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37D1896E1A2157DF007EE1AB /* ClassCell.xib */; };
 		37D189721A21599E007EE1AB /* ClassCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D189711A21599E007EE1AB /* ClassCellTableViewCell.m */; };
@@ -90,6 +91,7 @@
 		372A52171A31992400A21D2F /* ResultsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsCell.m; sourceTree = "<group>"; };
 		372A52191A31A48600A21D2F /* ResultsRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsRow.h; sourceTree = "<group>"; };
 		372A521A1A31A48600A21D2F /* ResultsRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsRow.m; sourceTree = "<group>"; };
+		372A521C1A31BB0C00A21D2F /* OutcomeCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OutcomeCell2.xib; sourceTree = "<group>"; };
 		3750FDAB1A2A8F5500A2E742 /* CAC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CAC.png; sourceTree = "<group>"; };
 		37D1896E1A2157DF007EE1AB /* ClassCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassCell.xib; sourceTree = "<group>"; };
 		37D189701A21599E007EE1AB /* ClassCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassCellTableViewCell.h; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				3701592E1A22A26D0033F609 /* PerformanceIndicators.xib */,
 				370159161A226AE20033F609 /* RosterCell.xib */,
 				3701591E1A2272560033F609 /* OutcomeCell.xib */,
+				372A521C1A31BB0C00A21D2F /* OutcomeCell2.xib */,
 				37D1896E1A2157DF007EE1AB /* ClassCell.xib */,
 				37E259A71A23BA7700EB9E2E /* SearchCategory.xib */,
 				38CE0DC31A1AEB31009AF819 /* Images.xcassets */,
@@ -359,6 +362,7 @@
 				37D9458B1A1B004200565E7C /* elephantsincherrytrees.ttf in Resources */,
 				37E259A81A23BA7700EB9E2E /* SearchCategory.xib in Resources */,
 				37D1896F1A2157DF007EE1AB /* ClassCell.xib in Resources */,
+				372A521D1A31BB0C00A21D2F /* OutcomeCell2.xib in Resources */,
 				370159171A226AE20033F609 /* RosterCell.xib in Resources */,
 				3701592F1A22A26D0033F609 /* PerformanceIndicators.xib in Resources */,
 				37DD2C221A2A42FA00E0A5CC /* ProfessorCell.xib in Resources */,
