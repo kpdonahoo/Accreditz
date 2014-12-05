@@ -10,145 +10,65 @@
 #import "SearchCategory.h"
 #import "ClassCellTableViewCell.h"
 #import "ProfessorCell.h"
+#import "ClassObject.h"
+#import "AdminResults.h"
 
 @interface SearchPage ()
-@property (weak, nonatomic) IBOutlet UITableView *categoryTableView;
-@property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
-@property (weak, nonatomic) IBOutlet UITextField *searchText;
-@property (strong, nonatomic) IBOutlet UIView *SearchView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UILabel *searchTitle;
+@property (strong, nonatomic) NSURLSession *session;
 @end
 
 @implementation SearchPage
-@synthesize categoryTableView;
-@synthesize categoryLabel;
-@synthesize searchText;
-@synthesize SearchView;
+@synthesize searchTitle;
+@synthesize ID;
+@synthesize tableView;
+NSString *name;
 int table_choice = 0;
+NSMutableDictionary *jsonUpload;
+NSMutableArray *courses;
+NSMutableArray *classObjects;
+AdminResults *vc;
+NSString *classNumberString;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBar.hidden = NO;
-    categoryTableView.dataSource = self;
-    categoryTableView.delegate = self;
-    categoryTableView.tag = 0;
-    categoryTableView.layer.borderWidth = .5;
-    categoryTableView.layer.borderColor = [[UIColor lightGrayColor]CGColor];
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:10.0/255.0 green:78.0/255.0 blue:129.0/255.0 alpha:1];
+    [self getProfessorInfo];
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    classObjects = [[NSMutableArray alloc] init];
+    [self getAllClasses];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    if (tableView.tag == 0) {
-        
-        return 44;
-        
-    } else {
-        
-        return 201;
-        
-    }
+    return 201;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (tableView.tag == 0) {
-        
-        return 3;
-        
-    } else {
-        
-        return 5;
-    }
+    return [classObjects count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *simpleTableIdentifier = @"SimpleTableCell";
-    UITableView *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+            
+            static NSString *simpleTableIdentifier = @"ClassCell";
+            
+            ClassCellTableViewCell *cell = (ClassCellTableViewCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+            
+            if (cell == nil)
+            {
+                NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ClassCell" owner:self options:nil];
+                cell = [nib objectAtIndex:0];
+            }
     
-    if (tableView.tag == 0) {
-        
-        static NSString *simpleTableIdentifier = @"SearchCategory";
-        
-        SearchCategory *cell = (SearchCategory *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
-        
-        if (cell == nil)
-        {
-            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SearchCategory" owner:self options:nil];
-            cell = [nib objectAtIndex:0];
-        }
-        
-        
-        if (indexPath.row == 0) {
-            cell.category.text = @"Search by Class Name";
-        } else if (indexPath.row == 1) {
-            cell.category.text = @"Search by Class Number";
-        } else if (indexPath.row == 2) {
-            cell.category.text = @"Search by Professor Name";
-        } else {
-            cell.category.text = @"Shouldn't exist";
-        }
-        
-        return cell;
-       
-    } else if (tableView.tag == 1) {
-       
-        if (table_choice == 0) {
-            
-            static NSString *simpleTableIdentifier = @"ClassCell";
-            
-            ClassCellTableViewCell *cell = (ClassCellTableViewCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
-            
-            if (cell == nil)
-            {
-                NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ClassCell" owner:self options:nil];
-                cell = [nib objectAtIndex:0];
-            }
-            
-            cell.className.text = @"Programming Languages";
-            cell.classNumber.text = @"CSE 3342";
-            cell.percent.text = @"100% Completed";
-            cell.section.text = @"Section 001";
-            
-            return cell;
-            
-        } else if (table_choice == 1) {
-            
-            static NSString *simpleTableIdentifier = @"ClassCell";
-            
-            ClassCellTableViewCell *cell = (ClassCellTableViewCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
-            
-            if (cell == nil)
-            {
-                NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ClassCell" owner:self options:nil];
-                cell = [nib objectAtIndex:0];
-            }
-            
-            cell.className.text = @"Programming Languages";
-            cell.classNumber.text = @"CSE 3342";
-            cell.percent.text = @"100% Completed";
-            cell.section.text = @"Section 001";
-            
-            return cell;
-
-        } else if (table_choice == 2) {
-            
-            static NSString *simpleTableIdentifier = @"ProfessorCell";
-            
-            ProfessorCell *cell = (ProfessorCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
-            
-            if (cell == nil)
-            {
-                NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ProfessorCell" owner:self options:nil];
-                cell = [nib objectAtIndex:0];
-            }
-            
-            cell.professorName.text = @"Mark Fontenot";
-            
-            return cell;
-
-        }
-    }
+    ClassObject *temp = [classObjects objectAtIndex:indexPath.row];
+    
+    cell.className.text = temp.name;
+    cell.classNumber.text = [NSString stringWithFormat:@"CSE %@",[temp.number substringFromIndex: [temp.number length] - 4]];
+    cell.section.text = [NSString stringWithFormat:@"Section %@",temp.section];
     
     return cell;
 }
@@ -156,53 +76,10 @@ int table_choice = 0;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (tableView.tag == 0) {
-        if (indexPath.row == 0) {
-            categoryLabel.text = @"Search by Class Name";
-            searchText.placeholder = @"CLASS NAME";
-            table_choice = 0;
-            UITableView *searchResultsTableView=[[UITableView alloc]init];
-            searchResultsTableView.frame = CGRectMake(0,248,1024,520);
-            searchResultsTableView.dataSource=self;
-            searchResultsTableView.delegate=self;
-            searchResultsTableView.tag = 1;
-            //[searchResultsTableView reloadData];
-            [SearchView addSubview:searchResultsTableView];
-            [SearchView bringSubviewToFront:categoryTableView];
-        } else if (indexPath.row == 1) {
-            categoryLabel.text = @"Search by Class Number";
-            searchText.placeholder = @"CLASS NUMBER";
-            table_choice = 1;
-            UITableView *searchResultsTableView=[[UITableView alloc]init];
-            searchResultsTableView.frame = CGRectMake(0,248,1024,520);
-            searchResultsTableView.dataSource=self;
-            searchResultsTableView.delegate=self;
-            searchResultsTableView.tag = 1;
-            //[searchResultsTableView reloadData];
-            [SearchView addSubview:searchResultsTableView];
-            [SearchView bringSubviewToFront:categoryTableView];
-        } else {
-            categoryLabel.text = @"Search by Professor Name";
-            searchText.placeholder = @"PROFESSOR NAME";
-            table_choice = 2;
-            UITableView *searchResultsTableView=[[UITableView alloc]init];
-            searchResultsTableView.frame = CGRectMake(0,248,1024,520);
-            searchResultsTableView.dataSource=self;
-            searchResultsTableView.delegate=self;
-            searchResultsTableView.tag = 1;
-            //[searchResultsTableView reloadData];
-            [SearchView addSubview:searchResultsTableView];
-            [SearchView bringSubviewToFront:categoryTableView];
-        }
-    }
+    ClassObject *temp = [classObjects objectAtIndex:indexPath.row];
+    classNumberString = temp.number;
+    [self performSegueWithIdentifier:@"outcomes" sender:self];
     
-    categoryTableView.hidden = YES;
-}
-
-
-
-- (IBAction)categoryClicked:(id)sender {
-    categoryTableView.hidden = FALSE;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -210,14 +87,102 @@ int table_choice = 0;
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void) getProfessorInfo {
+    
+    NSURLSessionConfiguration *sessionConfig= [NSURLSessionConfiguration ephemeralSessionConfiguration];
+    sessionConfig.timeoutIntervalForRequest = 5.0;
+    sessionConfig.timeoutIntervalForResource = 8.0;
+    sessionConfig.HTTPMaximumConnectionsPerHost = 1;
+    
+    self.session = [NSURLSession sessionWithConfiguration:sessionConfig
+                                                 delegate:self
+                                            delegateQueue:nil];
+    
+    NSURL *postUrl = [NSURL URLWithString:@"http://ec2-54-68-112-35.us-west-2.compute.amazonaws.com:8000/GetProfessorInfo"];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:postUrl];
+    
+    jsonUpload = [[NSMutableDictionary alloc] init];
+    [jsonUpload setObject:ID forKey:@"username"];
+    
+    NSLog(@"%@",jsonUpload);
+    
+    NSError *error = nil;
+    NSData *requestBody=[NSJSONSerialization dataWithJSONObject:jsonUpload options:NSJSONWritingPrettyPrinted error:&error];
+    
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:requestBody];
+    
+    NSURLSessionDataTask *postTask = [self.session dataTaskWithRequest:request
+                                                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                         NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData: data
+                                                                                                              options: NSJSONReadingMutableContainers error: &error];
+                                                         
+                                                         name = [JSON valueForKey:@"name"];
+                                                         NSLog(@"%@",name);
+                                                         dispatch_async(dispatch_get_main_queue(), ^{
+                                                             searchTitle.text = [NSString stringWithFormat:@"Welcome %@", name];
+                                                         });
+                                                     }];
+    
+    [postTask resume];
+    
 }
-*/
+
+-(void) getAllClasses {
+    
+    NSURL *postUrl = [NSURL URLWithString:@"http://ec2-54-68-112-35.us-west-2.compute.amazonaws.com:8000/GetAllClasses"];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:postUrl];
+    
+    NSError *error = nil;
+    NSData *requestBody=[NSJSONSerialization dataWithJSONObject:jsonUpload options:NSJSONWritingPrettyPrinted error:&error];
+    
+    [request setHTTPMethod:@"POST"];
+    
+    NSURLSessionDataTask *postTask = [self.session dataTaskWithRequest:request
+                                                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                         NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData: data
+                                                                                                              options: NSJSONReadingMutableContainers error: &error];
+                                                         
+                                                         NSString *result =[JSON valueForKey:@"meow"];
+                                                         
+                                                         NSLog(@"%@",result);
+                                                         
+                                                         courses = [NSMutableArray arrayWithArray:[result componentsSeparatedByString: @","]];
+                                                         
+                                                         
+                                                         for (int i = 0; i < [courses count]-1; i++) {
+                                                             
+                                                             ClassObject *temp = [[ClassObject alloc] init];
+                                                             temp.semester = [courses objectAtIndex:i];
+                                                             i++;
+                                                             temp.name =[courses objectAtIndex:i];
+                                                             i++;
+                                                             temp.number = [courses objectAtIndex:i];
+                                                             i++;
+                                                             temp.section = [courses objectAtIndex:i];
+                                                             
+                                                             [classObjects addObject:temp];
+                                                             
+                                                         }
+                                                         
+                                                         [tableView reloadData];
+                                                         
+                                                     }];
+    
+    [postTask resume];
+    
+}
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"outcomes"])
+    {
+        vc = (AdminResults *)[segue destinationViewController];
+        vc.classNumber = classNumberString;
+    }
+}
+
+
 
 @end

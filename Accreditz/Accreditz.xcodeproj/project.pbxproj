@@ -15,10 +15,14 @@
 		3701592F1A22A26D0033F609 /* PerformanceIndicators.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3701592E1A22A26D0033F609 /* PerformanceIndicators.xib */; };
 		370159321A22A31B0033F609 /* PerformanceIndicators.m in Sources */ = {isa = PBXBuildFile; fileRef = 370159311A22A31B0033F609 /* PerformanceIndicators.m */; };
 		370159341A22A85F0033F609 /* separator.png in Resources */ = {isa = PBXBuildFile; fileRef = 370159331A22A85F0033F609 /* separator.png */; };
-		370159381A22B1C10033F609 /* drop-down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 370159371A22B1C10033F609 /* drop-down@2x.png */; };
 		37042A0E1A2033AA00C7EA69 /* ClassList.m in Sources */ = {isa = PBXBuildFile; fileRef = 37042A0D1A2033AA00C7EA69 /* ClassList.m */; };
+		372A52071A31736300A21D2F /* drop-down.png in Resources */ = {isa = PBXBuildFile; fileRef = 372A52061A31736300A21D2F /* drop-down.png */; };
+		372A520D1A31785F00A21D2F /* EAC.png in Resources */ = {isa = PBXBuildFile; fileRef = 372A520C1A31785F00A21D2F /* EAC.png */; };
+		372A52101A31899400A21D2F /* AdminResults.m in Sources */ = {isa = PBXBuildFile; fileRef = 372A520F1A31899400A21D2F /* AdminResults.m */; };
+		372A52131A3192B700A21D2F /* ResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 372A52121A3192B700A21D2F /* ResultsViewController.m */; };
+		372A52151A31976600A21D2F /* ResultsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 372A52141A31976600A21D2F /* ResultsCell.xib */; };
+		372A52181A31992400A21D2F /* ResultsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 372A52171A31992400A21D2F /* ResultsCell.m */; };
 		3750FDAD1A2A8F5500A2E742 /* CAC.png in Resources */ = {isa = PBXBuildFile; fileRef = 3750FDAB1A2A8F5500A2E742 /* CAC.png */; };
-		3750FDAF1A2A938800A2E742 /* EAC@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3750FDAE1A2A938800A2E742 /* EAC@2x.png */; };
 		37D1896F1A2157DF007EE1AB /* ClassCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37D1896E1A2157DF007EE1AB /* ClassCell.xib */; };
 		37D189721A21599E007EE1AB /* ClassCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D189711A21599E007EE1AB /* ClassCellTableViewCell.m */; };
 		37D189781A215EC3007EE1AB /* ClassPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D189771A215EC3007EE1AB /* ClassPage.m */; };
@@ -72,11 +76,18 @@
 		370159301A22A31B0033F609 /* PerformanceIndicators.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PerformanceIndicators.h; path = ../PerformanceIndicators.h; sourceTree = "<group>"; };
 		370159311A22A31B0033F609 /* PerformanceIndicators.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PerformanceIndicators.m; path = ../PerformanceIndicators.m; sourceTree = "<group>"; };
 		370159331A22A85F0033F609 /* separator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = separator.png; sourceTree = "<group>"; };
-		370159371A22B1C10033F609 /* drop-down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "drop-down@2x.png"; sourceTree = "<group>"; };
 		37042A0C1A2033AA00C7EA69 /* ClassList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassList.h; sourceTree = "<group>"; };
 		37042A0D1A2033AA00C7EA69 /* ClassList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassList.m; sourceTree = "<group>"; };
+		372A52061A31736300A21D2F /* drop-down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "drop-down.png"; sourceTree = "<group>"; };
+		372A520C1A31785F00A21D2F /* EAC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EAC.png; sourceTree = "<group>"; };
+		372A520E1A31899400A21D2F /* AdminResults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminResults.h; sourceTree = "<group>"; };
+		372A520F1A31899400A21D2F /* AdminResults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminResults.m; sourceTree = "<group>"; };
+		372A52111A3192B700A21D2F /* ResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsViewController.h; sourceTree = "<group>"; };
+		372A52121A3192B700A21D2F /* ResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsViewController.m; sourceTree = "<group>"; };
+		372A52141A31976600A21D2F /* ResultsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultsCell.xib; sourceTree = "<group>"; };
+		372A52161A31992400A21D2F /* ResultsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsCell.h; sourceTree = "<group>"; };
+		372A52171A31992400A21D2F /* ResultsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsCell.m; sourceTree = "<group>"; };
 		3750FDAB1A2A8F5500A2E742 /* CAC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CAC.png; sourceTree = "<group>"; };
-		3750FDAE1A2A938800A2E742 /* EAC@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EAC@2x.png"; sourceTree = "<group>"; };
 		37D1896E1A2157DF007EE1AB /* ClassCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassCell.xib; sourceTree = "<group>"; };
 		37D189701A21599E007EE1AB /* ClassCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassCellTableViewCell.h; sourceTree = "<group>"; };
 		37D189711A21599E007EE1AB /* ClassCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassCellTableViewCell.m; sourceTree = "<group>"; };
@@ -142,17 +153,17 @@
 			isa = PBXGroup;
 			children = (
 				370159231A227A640033F609 /* Outcome.png */,
-				3750FDAE1A2A938800A2E742 /* EAC@2x.png */,
 				3750FDAB1A2A8F5500A2E742 /* CAC.png */,
 				37E92AE11A1BE93A002ED49C /* icon76.png */,
 				37E92AE21A1BE93A002ED49C /* icon76@2x.png */,
 				37E259921A22CE1600EB9E2E /* asterisk.png */,
-				370159371A22B1C10033F609 /* drop-down@2x.png */,
 				37E2597F1A22C61200EB9E2E /* accreditz_bg.png */,
 				370159331A22A85F0033F609 /* separator.png */,
 				37E259AC1A23BE1700EB9E2E /* search_drop_down.png */,
+				372A52061A31736300A21D2F /* drop-down.png */,
 				37E259A31A23B42C00EB9E2E /* search_bar.png */,
 				37E259A11A23B3AE00EB9E2E /* search_button.png */,
+				372A520C1A31785F00A21D2F /* EAC.png */,
 				37E259961A22E74600EB9E2E /* Outcome2.png */,
 				37E259941A22CE8500EB9E2E /* asterisk2.png */,
 				37E2597C1A22B9E500EB9E2E /* submit.png */,
@@ -210,7 +221,14 @@
 				37E259981A23AFEA00EB9E2E /* SearchPage.h */,
 				37E259991A23AFEA00EB9E2E /* SearchPage.m */,
 				37D189791A21613A007EE1AB /* Main.storyboard */,
+				372A52111A3192B700A21D2F /* ResultsViewController.h */,
+				372A52121A3192B700A21D2F /* ResultsViewController.m */,
+				372A520E1A31899400A21D2F /* AdminResults.h */,
+				372A520F1A31899400A21D2F /* AdminResults.m */,
 				37DD2C211A2A42FA00E0A5CC /* ProfessorCell.xib */,
+				372A52141A31976600A21D2F /* ResultsCell.xib */,
+				372A52161A31992400A21D2F /* ResultsCell.h */,
+				372A52171A31992400A21D2F /* ResultsCell.m */,
 				3701592E1A22A26D0033F609 /* PerformanceIndicators.xib */,
 				370159161A226AE20033F609 /* RosterCell.xib */,
 				3701591E1A2272560033F609 /* OutcomeCell.xib */,
@@ -332,8 +350,8 @@
 				37E92AE01A1BE87A002ED49C /* icon@2x.png in Resources */,
 				37E92AE41A1BE93A002ED49C /* icon76@2x.png in Resources */,
 				3701591F1A2272560033F609 /* OutcomeCell.xib in Resources */,
+				372A520D1A31785F00A21D2F /* EAC.png in Resources */,
 				37D9458B1A1B004200565E7C /* elephantsincherrytrees.ttf in Resources */,
-				3750FDAF1A2A938800A2E742 /* EAC@2x.png in Resources */,
 				37E259A81A23BA7700EB9E2E /* SearchCategory.xib in Resources */,
 				37D1896F1A2157DF007EE1AB /* ClassCell.xib in Resources */,
 				370159171A226AE20033F609 /* RosterCell.xib in Resources */,
@@ -341,16 +359,17 @@
 				37DD2C221A2A42FA00E0A5CC /* ProfessorCell.xib in Resources */,
 				37E2597D1A22B9E500EB9E2E /* submit.png in Resources */,
 				37E92AE31A1BE93A002ED49C /* icon76.png in Resources */,
-				370159381A22B1C10033F609 /* drop-down@2x.png in Resources */,
 				370159241A227A640033F609 /* Outcome.png in Resources */,
 				37D1897A1A21613A007EE1AB /* Main.storyboard in Resources */,
 				37E259931A22CE1600EB9E2E /* asterisk.png in Resources */,
 				3750FDAD1A2A8F5500A2E742 /* CAC.png in Resources */,
 				370159341A22A85F0033F609 /* separator.png in Resources */,
+				372A52071A31736300A21D2F /* drop-down.png in Resources */,
 				37E259951A22CE8500EB9E2E /* asterisk2.png in Resources */,
 				37E259A41A23B42C00EB9E2E /* search_bar.png in Resources */,
 				37E259971A22E74600EB9E2E /* Outcome2.png in Resources */,
 				37E259AD1A23BE1700EB9E2E /* search_drop_down.png in Resources */,
+				372A52151A31976600A21D2F /* ResultsCell.xib in Resources */,
 				37E92ADB1A1BD099002ED49C /* smu.png in Resources */,
 				38CE0DC71A1AEB31009AF819 /* LaunchScreen.xib in Resources */,
 				37E259A21A23B3AE00EB9E2E /* search_button.png in Resources */,
@@ -375,12 +394,15 @@
 			files = (
 				370159321A22A31B0033F609 /* PerformanceIndicators.m in Sources */,
 				37DD2C251A2A442000E0A5CC /* ProfessorCell.m in Sources */,
+				372A52101A31899400A21D2F /* AdminResults.m in Sources */,
 				37042A0E1A2033AA00C7EA69 /* ClassList.m in Sources */,
 				3701591D1A226D190033F609 /* RosterCell.m in Sources */,
 				37D22D691A2A71220076E54E /* ClassObject.m in Sources */,
 				38CE0DBF1A1AEB31009AF819 /* ViewController.m in Sources */,
 				38CE0DBC1A1AEB31009AF819 /* AppDelegate.m in Sources */,
 				370159221A2272C80033F609 /* OutcomeCell.m in Sources */,
+				372A52131A3192B700A21D2F /* ResultsViewController.m in Sources */,
+				372A52181A31992400A21D2F /* ResultsCell.m in Sources */,
 				37E259AB1A23BB5D00EB9E2E /* SearchCategory.m in Sources */,
 				37E2599A1A23AFEA00EB9E2E /* SearchPage.m in Sources */,
 				37D189781A215EC3007EE1AB /* ClassPage.m in Sources */,

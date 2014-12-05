@@ -34,7 +34,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *Dlabel;
 @property (weak, nonatomic) IBOutlet UILabel *Slabel;
 @property (weak, nonatomic) IBOutlet UILabel *Elabel;
+@property (weak, nonatomic) IBOutlet UILabel *indicatorLabel;
 @property (weak, nonatomic) IBOutlet UIButton *submitButton;
+
 
 
 @end
@@ -64,6 +66,7 @@
 @synthesize Slabel;
 @synthesize Dlabel;
 @synthesize Elabel;
+@synthesize indicatorLabel;
 @synthesize submitButton;
 NSMutableDictionary *jsonUpload;
 NSString *students_string;
@@ -226,6 +229,8 @@ UIImage *CAC;
         boxFour.text = [box_descriptions objectAtIndex:(index*4)+3];
         
         diagram.hidden = FALSE;
+        
+        indicatorLabel.text = [NSString stringWithFormat:@"Performance Indicator %i",indexPath.row+1];
     }
 }
 
@@ -524,19 +529,24 @@ UIImage *CAC;
     }
 }
 
+- (IBAction)saveResultsForCourse:(id)sender {
 
--(void) name {
-    
-    NSURL *postUrl = [NSURL URLWithString:@"http://ec2-54-68-112-35.us-west-2.compute.amazonaws.com:8000/GetPerformanceIndicatorInfo"];
+    NSURL *postUrl = [NSURL URLWithString:@"http://ec2-54-68-112-35.us-west-2.compute.amazonaws.com:8000/SaveResultsForCourse"];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:postUrl];
     
     jsonUpload = [[NSMutableDictionary alloc] init];
+    [jsonUpload setObject:classNumber forKey:@"course"];
+    [jsonUpload setObject:section forKey:@"section"];
     NSString *title = outcomeTitle.text;
     NSString *first = [title substringToIndex:3];
     NSString *second = [title substringFromIndex: [title length] - 1];
     NSString *send = [NSString stringWithFormat:@"%@%@",[first lowercaseString],[second lowercaseString]];
     [jsonUpload setObject:send forKey:@"outcome"];
+    [jsonUpload setObject:[NSString stringWithFormat:@"%i",Ucount] forKey:@"1"];
+    [jsonUpload setObject:[NSString stringWithFormat:@"%i",Dcount] forKey:@"2"];
+    [jsonUpload setObject:[NSString stringWithFormat:@"%i",Scount] forKey:@"3"];
+    [jsonUpload setObject:[NSString stringWithFormat:@"%i",Ecount] forKey:@"4"];
     
     NSLog(@"%@",jsonUpload);
     
@@ -551,51 +561,23 @@ UIImage *CAC;
                                                          NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData: data
                                                                                                               options: NSJSONReadingMutableContainers error: &error];
                                                          
-                                                         performance_string =[JSON valueForKey:@"meow"];
+                                                         NSString *result =[JSON valueForKey:@"meow"];
                                                          
-                                                         NSLog(@"%@",performance_string);
-                                                         
-                                                         info_array = [NSMutableArray arrayWithArray:[performance_string componentsSeparatedByString: @";"]];
-                                                         
-                                                         int number_of_indicators = (([info_array count]-1)/5);
-                                                         
-                                                         for (int j = 1; j <= number_of_indicators; j++) {
-                                                             
-                                                             [performance_indicators addObject:[NSString stringWithFormat:@"Performance Indicator %d",j]];
-                                                         }
-                                                         
-                                                         for (int j = 1; j < [info_array count]; j=j+5) {
-                                                             
-                                                             [indicator_descriptions addObject:[info_array objectAtIndex:j]];
-                                                         }
-                                                         
-                                                         for (int j = 2; j < [info_array count]; j=j+2) {
-                                                             
-                                                             [box_descriptions addObject:[info_array objectAtIndex:j]];
-                                                             j++;
-                                                             [box_descriptions addObject:[info_array objectAtIndex:j]];
-                                                             j++;
-                                                             [box_descriptions addObject:[info_array objectAtIndex:j]];
-                                                             j++;
-                                                             [box_descriptions addObject:[info_array objectAtIndex:j]];
-                                                         }
-                                                         
-                                                         for (int i = 0; i < [box_descriptions count]; i++) {
-                                                             //NSLog([box_descriptions objectAtIndex:i]);
-                                                         }
-                                                         
-                                                         
-                                                         [selectOneTableView reloadData];
-                                                         
-                                                         dispatch_async(dispatch_get_main_queue(), ^{
-                                                             outcomeDescription.text = [info_array objectAtIndex:0];
-                                                         });
+                                                         NSLog(@"%@",result);
                                                          
                                                      }];
     
     [postTask resume];
-    
+
+
 }
 
+- (IBAction)goBackFromOutcome:(id)sender {
+    outcomeView.hidden = TRUE;
+    Ulabel.text = @"0";
+    Dlabel.text = @"0";
+    Slabel.text = @"0";
+    Elabel.text = @"0";
+}
 
 @end

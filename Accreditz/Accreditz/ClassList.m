@@ -65,9 +65,8 @@ NSMutableArray *classObjects;
     ClassObject *temp = [classObjects objectAtIndex:indexPath.row];
     
     cell.className.text = temp.name;
-    cell.classNumber.text = temp.number;
-    cell.percent.text = @"100%";
-    cell.section.text = temp.section;
+    cell.classNumber.text = [NSString stringWithFormat:@"CSE %@",[temp.number substringFromIndex: [temp.number length] - 4]];
+    cell.section.text = [NSString stringWithFormat:@"Section %@",temp.section];
     
     return cell;
 }
@@ -78,7 +77,6 @@ NSMutableArray *classObjects;
     classNumber = cell.classNumber.text;
     className = cell.className.text;
     section = cell.section.text;
-    percent = cell.percent.text;
     
     [self performSegueWithIdentifier: @"classpage" sender: self];
 

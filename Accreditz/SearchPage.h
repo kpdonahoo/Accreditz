@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface SearchPage : UIViewController <UITableViewDataSource, UITableViewDelegate>
-
+@property (nonatomic, strong) NSString *ID;
 @end

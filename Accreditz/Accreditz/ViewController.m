@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "ClassList.h"
+#import "SearchPage.h"
 
 @interface ViewController () <NSURLSessionTaskDelegate>
 @property (strong, nonatomic) IBOutlet UIView *connectButton;
@@ -34,6 +35,7 @@
 NSMutableDictionary *jsonUpload;
 NSString *result;
 ClassList *vc;
+SearchPage *vc2;
 
 - (void)viewDidLoad {
     [super viewDidLoad];    
@@ -122,6 +124,13 @@ ClassList *vc;
             password.text = @"";
             errorMessage.text = @"";
             errorAsterisk.hidden = YES;
+        } else if ([[segue identifier] isEqualToString:@"admin"]) {
+            vc2 = (SearchPage *)[segue destinationViewController];
+            vc2.ID = ID.text;
+            ID.text = @"";
+            password.text = @"";
+            errorMessage.text = @"";
+            errorAsterisk.hidden = YES;
         }
 }
 
@@ -133,7 +142,11 @@ ClassList *vc;
         errorAsterisk.hidden = NO;
         errorMessage.text = @"Invalid username or password";
     } else if ([result isEqualToString:@"Success"]){
-        [self performSegueWithIdentifier:@"login" sender:self];
+        if ([ID.text isEqualToString:@"coyle"]) {
+            [self performSegueWithIdentifier:@"admin" sender:self];
+        } else {
+            [self performSegueWithIdentifier:@"login" sender:self];
+        }
     }
 }
 
