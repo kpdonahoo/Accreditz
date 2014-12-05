@@ -30,6 +30,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *boxFour;
 @property (weak, nonatomic) IBOutlet UIImageView *diagram;
 
+@property (weak, nonatomic) IBOutlet UILabel *Ulabel;
+@property (weak, nonatomic) IBOutlet UILabel *Dlabel;
+@property (weak, nonatomic) IBOutlet UILabel *Slabel;
+@property (weak, nonatomic) IBOutlet UILabel *Elabel;
+@property (weak, nonatomic) IBOutlet UIButton *submitButton;
+
+
 @end
 
 @implementation ClassPage
@@ -53,6 +60,11 @@
 @synthesize boxThree;
 @synthesize boxFour;
 @synthesize diagram;
+@synthesize Ulabel;
+@synthesize Slabel;
+@synthesize Dlabel;
+@synthesize Elabel;
+@synthesize submitButton;
 NSMutableDictionary *jsonUpload;
 NSString *students_string;
 NSString *outcomes_string;
@@ -67,6 +79,12 @@ NSMutableArray *info;
 NSMutableArray *performance_indicators;
 NSMutableArray *indicator_descriptions;
 NSMutableArray *box_descriptions;
+int Ucount;
+int Dcount;
+int Scount;
+int Ecount;
+int CACcount;
+int EACcount;
 
 UIImage *EAC;
 UIImage *CAC;
@@ -189,9 +207,14 @@ UIImage *CAC;
     outcomeTitle.text = [outcomes objectAtIndex:indexPath.row];
     [self getPerformanceIndicatorInfo];
     outcomeView.hidden = FALSE;
+        Dcount = 0;
+        Scount = 0;
+        Ecount = 0;
+        Ucount = 0;
     
     } else if (tableView.tag == 2) {
         selectOneTableView.hidden = YES;
+         submitButton.hidden = FALSE;
         performanceDescription.text = [indicator_descriptions objectAtIndex:indexPath.row];
         performanceDescription.hidden = FALSE;
         
@@ -216,6 +239,9 @@ UIImage *CAC;
 }
 
 -(void) getRoster {
+    
+    CACcount = 0;
+    EACcount = 0;
     
     NSURLSessionConfiguration *sessionConfig= [NSURLSessionConfiguration ephemeralSessionConfiguration];
     sessionConfig.timeoutIntervalForRequest = 5.0;
@@ -265,10 +291,12 @@ UIImage *CAC;
                                                                  
                                                                    [students addObject:[students_array objectAtIndex:i]];
                                                                    [symbols addObject:@"CAC"];
+                                                                   CACcount++;
                                                                  
                                                              } else if (type == 1 && [[students_array objectAtIndex:i] rangeOfString:@"studentsEAC"].location == NSNotFound) {
                                                                    [students addObject:[students_array objectAtIndex:i]];
                                                                    [symbols addObject:@"EAC"];
+                                                                   EACcount++;
                                                              }
                                                              
                                                              
@@ -384,7 +412,7 @@ UIImage *CAC;
                                                              [indicator_descriptions addObject:[info_array objectAtIndex:j]];
                                                          }
                                                          
-                                                         for (int j = 2; j < [info_array count]; j=j+3) {
+                                                         for (int j = 2; j < [info_array count]; j=j+2) {
                                                              
                                                              [box_descriptions addObject:[info_array objectAtIndex:j]];
                                                              j++;
@@ -396,7 +424,7 @@ UIImage *CAC;
                                                          }
                                                          
                                                          for (int i = 0; i < [box_descriptions count]; i++) {
-                                                             NSLog([box_descriptions objectAtIndex:i]);
+                                                             //NSLog([box_descriptions objectAtIndex:i]);
                                                          }
                                                          
                                                          
@@ -411,5 +439,163 @@ UIImage *CAC;
     [postTask resume];
     
 }
+
+- (IBAction)Uminus:(id)sender {
+    if (Ucount!=0) {
+    Ucount--;
+    Ulabel.text = [NSString stringWithFormat:@"%i",Ucount];
+    }
+}
+
+- (IBAction)Uplus:(id)sender {
+    if ([[outcomeTitle.text substringToIndex:1] isEqualToString:@"C"]) {
+        if (Ucount < CACcount ) {
+            Ucount++;
+            Ulabel.text = [NSString stringWithFormat:@"%i",Ucount];
+        }
+    } else if ([[outcomeTitle.text substringToIndex:1] isEqualToString:@"E"]) {
+        if (Ucount < EACcount ) {
+            Ucount++;
+            Ulabel.text = [NSString stringWithFormat:@"%i",Ucount];
+        }
+    }
+}
+
+- (IBAction)Dminus:(id)sender {
+    if (Dcount!=0) {
+    Dcount--;
+    Dlabel.text = [NSString stringWithFormat:@"%i",Dcount];
+    }
+}
+
+- (IBAction)Dplus:(id)sender {
+    if ([[outcomeTitle.text substringToIndex:1] isEqualToString:@"C"]) {
+        if (Dcount < CACcount ) {
+            Dcount++;
+            Dlabel.text = [NSString stringWithFormat:@"%i",Dcount];
+        }
+    } else if ([[outcomeTitle.text substringToIndex:1] isEqualToString:@"E"]) {
+        if (Dcount < EACcount ) {
+            Dcount++;
+            Dlabel.text = [NSString stringWithFormat:@"%i",Dcount];
+        }
+    }
+}
+
+- (IBAction)Sminus:(id)sender {
+    if (Scount!=0) {
+    Scount--;
+    Slabel.text = [NSString stringWithFormat:@"%i",Scount];
+    }
+}
+
+- (IBAction)Splus:(id)sender {
+    if ([[outcomeTitle.text substringToIndex:1] isEqualToString:@"C"]) {
+        if (Scount < CACcount ) {
+            Scount++;
+            Slabel.text = [NSString stringWithFormat:@"%i",Scount];
+        }
+    } else if ([[outcomeTitle.text substringToIndex:1] isEqualToString:@"E"]) {
+        if (Scount < EACcount ) {
+            Scount++;
+            Slabel.text = [NSString stringWithFormat:@"%i",Scount];
+        }
+    }
+}
+
+- (IBAction)Eminus:(id)sender {
+    if (Ecount!=0) {
+    Ecount--;
+    Elabel.text = [NSString stringWithFormat:@"%i",Ecount];
+    }
+}
+
+- (IBAction)Eplus:(id)sender {
+    if ([[outcomeTitle.text substringToIndex:1] isEqualToString:@"C"]) {
+        if (Ecount < CACcount ) {
+            Ecount++;
+            Elabel.text = [NSString stringWithFormat:@"%i",Ecount];
+        }
+    } else if ([[outcomeTitle.text substringToIndex:1] isEqualToString:@"E"]) {
+        if (Ecount < EACcount ) {
+            Ecount++;
+            Elabel.text = [NSString stringWithFormat:@"%i",Ecount];
+        }
+    }
+}
+
+
+-(void) name {
+    
+    NSURL *postUrl = [NSURL URLWithString:@"http://ec2-54-68-112-35.us-west-2.compute.amazonaws.com:8000/GetPerformanceIndicatorInfo"];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:postUrl];
+    
+    jsonUpload = [[NSMutableDictionary alloc] init];
+    NSString *title = outcomeTitle.text;
+    NSString *first = [title substringToIndex:3];
+    NSString *second = [title substringFromIndex: [title length] - 1];
+    NSString *send = [NSString stringWithFormat:@"%@%@",[first lowercaseString],[second lowercaseString]];
+    [jsonUpload setObject:send forKey:@"outcome"];
+    
+    NSLog(@"%@",jsonUpload);
+    
+    NSError *error = nil;
+    NSData *requestBody=[NSJSONSerialization dataWithJSONObject:jsonUpload options:NSJSONWritingPrettyPrinted error:&error];
+    
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:requestBody];
+    
+    NSURLSessionDataTask *postTask = [self.session dataTaskWithRequest:request
+                                                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                         NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData: data
+                                                                                                              options: NSJSONReadingMutableContainers error: &error];
+                                                         
+                                                         performance_string =[JSON valueForKey:@"meow"];
+                                                         
+                                                         NSLog(@"%@",performance_string);
+                                                         
+                                                         info_array = [NSMutableArray arrayWithArray:[performance_string componentsSeparatedByString: @";"]];
+                                                         
+                                                         int number_of_indicators = (([info_array count]-1)/5);
+                                                         
+                                                         for (int j = 1; j <= number_of_indicators; j++) {
+                                                             
+                                                             [performance_indicators addObject:[NSString stringWithFormat:@"Performance Indicator %d",j]];
+                                                         }
+                                                         
+                                                         for (int j = 1; j < [info_array count]; j=j+5) {
+                                                             
+                                                             [indicator_descriptions addObject:[info_array objectAtIndex:j]];
+                                                         }
+                                                         
+                                                         for (int j = 2; j < [info_array count]; j=j+2) {
+                                                             
+                                                             [box_descriptions addObject:[info_array objectAtIndex:j]];
+                                                             j++;
+                                                             [box_descriptions addObject:[info_array objectAtIndex:j]];
+                                                             j++;
+                                                             [box_descriptions addObject:[info_array objectAtIndex:j]];
+                                                             j++;
+                                                             [box_descriptions addObject:[info_array objectAtIndex:j]];
+                                                         }
+                                                         
+                                                         for (int i = 0; i < [box_descriptions count]; i++) {
+                                                             //NSLog([box_descriptions objectAtIndex:i]);
+                                                         }
+                                                         
+                                                         
+                                                         [selectOneTableView reloadData];
+                                                         
+                                                         dispatch_async(dispatch_get_main_queue(), ^{
+                                                             outcomeDescription.text = [info_array objectAtIndex:0];
+                                                         });
+                                                         
+                                                     }];
+    
+    [postTask resume];
+    
+}
+
 
 @end
