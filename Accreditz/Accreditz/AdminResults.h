@@ -10,4 +10,5 @@
 
 @interface AdminResults : ViewController <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) NSString *classNumber;
+@property (nonatomic, strong) NSString *section;
 @end

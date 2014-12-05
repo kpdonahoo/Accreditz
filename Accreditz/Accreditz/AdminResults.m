@@ -27,6 +27,7 @@ NSMutableArray *outcomes;
 NSMutableDictionary *jsonUpload;
 NSString *clicked_outcome;
 ResultsViewController *vc;
+@synthesize section;
 
 
 -(void) viewDidAppear:(BOOL)animated {
@@ -147,8 +148,9 @@ ResultsViewController *vc;
                                                              
                                                              
                                                          }
-                                                         
-                                                         [outcomesTableView reloadData];
+                                                         dispatch_async(dispatch_get_main_queue(), ^{
+                                                             [outcomesTableView reloadData];
+                                                         });
                                                          
                                                      }];
     
@@ -161,6 +163,8 @@ ResultsViewController *vc;
     {
         vc = (ResultsViewController *)[segue destinationViewController];
         vc.outcome = clicked_outcome;
+        vc.course = classNumber;
+        vc.section = section;
     }
 }
 

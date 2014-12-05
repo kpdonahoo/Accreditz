@@ -9,7 +9,12 @@
 #import "ResultsCell.h"
 
 @implementation ResultsCell
-
+@synthesize box0;
+@synthesize box1;
+@synthesize box2;
+@synthesize box3;
+@synthesize box4;
+@synthesize box5;
 - (void)awakeFromNib {
     // Initialization code
 }

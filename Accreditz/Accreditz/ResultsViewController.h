@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 
-@interface ResultsViewController : ViewController
+@interface ResultsViewController : ViewController <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) NSString *outcome;
+@property (nonatomic, strong) NSString *course;
+@property (nonatomic, strong) NSString *section;
 @end

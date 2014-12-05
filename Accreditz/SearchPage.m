@@ -30,6 +30,7 @@ NSMutableArray *courses;
 NSMutableArray *classObjects;
 AdminResults *vc;
 NSString *classNumberString;
+NSString *sectionString;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -78,6 +79,7 @@ NSString *classNumberString;
     
     ClassObject *temp = [classObjects objectAtIndex:indexPath.row];
     classNumberString = temp.number;
+    sectionString = temp.section;
     [self performSegueWithIdentifier:@"outcomes" sender:self];
     
 }
@@ -169,6 +171,10 @@ NSString *classNumberString;
                                                          
                                                          [tableView reloadData];
                                                          
+                                                         dispatch_async(dispatch_get_main_queue(), ^{
+                                                             [self.tableView reloadData];
+                                                         });
+                                                         
                                                      }];
     
     [postTask resume];
@@ -180,8 +186,11 @@ NSString *classNumberString;
     {
         vc = (AdminResults *)[segue destinationViewController];
         vc.classNumber = classNumberString;
+        vc.section = sectionString;
     }
 }
+
+
 
 
 

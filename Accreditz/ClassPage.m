@@ -438,6 +438,8 @@ UIImage *CAC;
                                                          dispatch_async(dispatch_get_main_queue(), ^{
                                                          outcomeDescription.text = [info_array objectAtIndex:0];
                                                              });
+
+                                                             [outcomesTableView reloadData];
                                                          
                                                      }];
     
